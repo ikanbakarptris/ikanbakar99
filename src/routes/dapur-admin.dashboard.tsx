@@ -388,7 +388,7 @@ function HeroPanel() {
             />
           </div>
         </Field>
-        <Field label="Teks Label Kecil" htmlFor="hero_badge" hint="Contoh: Ungaran & sekitarnya">
+        <Field label="Teks Label Kecil" htmlFor="hero_badge" hint="Contoh: Puri Delta & sekitarnya">
           <input
             id="hero_badge"
             className={inputClass}
