@@ -13,6 +13,7 @@ import { CheckCircle2, ChevronRight, Share2 } from 'lucide-react';
 
 export const Route = createFileRoute('/kuesioner')({
   component: KuesionerPage,
+  ssr: false,
 });
 
 function KuesionerPage() {
