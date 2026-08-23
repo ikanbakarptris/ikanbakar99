@@ -24,12 +24,12 @@ const nodeEnv = typeof process !== "undefined" ? process.env : undefined;
 export const SUPABASE_URL: string =
   viteEnv?.["VITE_OWN_SUPABASE_URL"] ||
   nodeEnv?.["OWN_SUPABASE_URL"] ||
-  "https://aaaafvtvofunzelublak.supabase.co";
+  "https://rbwimpvcbklqodqsfcvf.supabase.co";
 
 export const SUPABASE_PUBLISHABLE_KEY: string =
   viteEnv?.["VITE_OWN_SUPABASE_PUBLISHABLE_KEY"] ||
   nodeEnv?.["OWN_SUPABASE_PUBLISHABLE_KEY"] ||
-  "sb_publishable_ckYtrYIVvHQXzG_12UushA_7ADMdQu7";
+  "sb_publishable_eI-NNuflW0qxNbTgck71uQ_cCDWfe8o";
 
 /** Service role key — server-only, never bundled to the browser. */
 export function getServiceRoleKey(): string | undefined {
