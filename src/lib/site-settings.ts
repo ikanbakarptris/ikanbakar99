@@ -44,8 +44,12 @@ export interface SiteSettings {
   social_tiktok?: string | null;
   contact_email?: string | null;
   active_template?: string | null;
+  advanced_json_ld?: string | null;
+  advanced_css?: string | null;
+  advanced_head_scripts?: string | null;
   updated_at?: string;
 }
+
 
 export type SiteSettingsInput = Omit<SiteSettings, "id" | "updated_at">;
 
