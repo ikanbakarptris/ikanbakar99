@@ -14,7 +14,171 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      reviews: {
+        Row: {
+          bike_type: string | null
+          created_at: string
+          id: string
+          is_local_guide: boolean
+          media_url: string | null
+          owner_reply: string | null
+          rating: number
+          review_text: string
+          reviewer_avatar_url: string | null
+          reviewer_name: string
+          reviewer_role: string | null
+          reviewer_url: string | null
+          sort_order: number
+        }
+        Insert: {
+          bike_type?: string | null
+          created_at?: string
+          id?: string
+          is_local_guide?: boolean
+          media_url?: string | null
+          owner_reply?: string | null
+          rating?: number
+          review_text: string
+          reviewer_avatar_url?: string | null
+          reviewer_name: string
+          reviewer_role?: string | null
+          reviewer_url?: string | null
+          sort_order?: number
+        }
+        Update: {
+          bike_type?: string | null
+          created_at?: string
+          id?: string
+          is_local_guide?: boolean
+          media_url?: string | null
+          owner_reply?: string | null
+          rating?: number
+          review_text?: string
+          reviewer_avatar_url?: string | null
+          reviewer_name?: string
+          reviewer_role?: string | null
+          reviewer_url?: string | null
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          active_template: string | null
+          address_title: string
+          advanced_css: string | null
+          advanced_head_scripts: string | null
+          advanced_json_ld: string | null
+          carousel_images: string[]
+          contact_email: string | null
+          cta_maps_text: string
+          cta_whatsapp_text: string
+          font_family: string
+          header_subtitle: string
+          hero_badge: string
+          hero_desc_1: string
+          hero_desc_2: string
+          hero_image: string | null
+          hero_stats: Json
+          hero_title: string
+          id: string
+          maps_url: string
+          services: Json
+          services_subtitle: string
+          services_title: string
+          shop_address: string
+          shop_hours: string
+          shop_name: string
+          shop_rating: number
+          shop_reviews_count: number
+          social_facebook: string | null
+          social_instagram: string | null
+          social_tiktok: string | null
+          theme_color: string
+          trust_pickup_desc: string
+          trust_pickup_title: string
+          trust_rating_text: string
+          updated_at: string
+          whatsapp_number: string
+        }
+        Insert: {
+          active_template?: string | null
+          address_title?: string
+          advanced_css?: string | null
+          advanced_head_scripts?: string | null
+          advanced_json_ld?: string | null
+          carousel_images?: string[]
+          contact_email?: string | null
+          cta_maps_text?: string
+          cta_whatsapp_text?: string
+          font_family?: string
+          header_subtitle?: string
+          hero_badge?: string
+          hero_desc_1?: string
+          hero_desc_2?: string
+          hero_image?: string | null
+          hero_stats?: Json
+          hero_title?: string
+          id?: string
+          maps_url?: string
+          services?: Json
+          services_subtitle?: string
+          services_title?: string
+          shop_address?: string
+          shop_hours?: string
+          shop_name?: string
+          shop_rating?: number
+          shop_reviews_count?: number
+          social_facebook?: string | null
+          social_instagram?: string | null
+          social_tiktok?: string | null
+          theme_color?: string
+          trust_pickup_desc?: string
+          trust_pickup_title?: string
+          trust_rating_text?: string
+          updated_at?: string
+          whatsapp_number?: string
+        }
+        Update: {
+          active_template?: string | null
+          address_title?: string
+          advanced_css?: string | null
+          advanced_head_scripts?: string | null
+          advanced_json_ld?: string | null
+          carousel_images?: string[]
+          contact_email?: string | null
+          cta_maps_text?: string
+          cta_whatsapp_text?: string
+          font_family?: string
+          header_subtitle?: string
+          hero_badge?: string
+          hero_desc_1?: string
+          hero_desc_2?: string
+          hero_image?: string | null
+          hero_stats?: Json
+          hero_title?: string
+          id?: string
+          maps_url?: string
+          services?: Json
+          services_subtitle?: string
+          services_title?: string
+          shop_address?: string
+          shop_hours?: string
+          shop_name?: string
+          shop_rating?: number
+          shop_reviews_count?: number
+          social_facebook?: string | null
+          social_instagram?: string | null
+          social_tiktok?: string | null
+          theme_color?: string
+          trust_pickup_desc?: string
+          trust_pickup_title?: string
+          trust_rating_text?: string
+          updated_at?: string
+          whatsapp_number?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
