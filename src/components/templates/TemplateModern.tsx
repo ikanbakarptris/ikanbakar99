@@ -41,7 +41,7 @@ function MapsCta({ className = "", url, text }: { className?: string, url?: stri
       rel="noopener noreferrer"
       className={`inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-border bg-card px-6 text-base font-semibold text-foreground hover:-translate-y-0.5 hover:shadow-md hover:border-foreground/20 transition-all duration-300 active:scale-95 ${className}`}
     >
-      {text || "Petunjuk Arah ke dapur"}
+      {text || "Petunjuk Arah ke rumah makan"}
     </a>
   );
 }
@@ -168,7 +168,7 @@ export default function TemplateModern() {
               <MapsCta className="w-full border-border/80 bg-card text-foreground shadow-sm hover:shadow-md hover:border-primary/40 hover:text-primary sm:w-auto" url={dynamicMapsUrl} text={ctaMapsText} />
             </div>
             <p className="mt-3 text-[13px] font-medium text-muted-foreground opacity-90">
-              ✓ Konsultasi gratis, tanpa komitmen. Langsung terhubung dengan mekanik spesialis.
+              ✓ Pesan langsung lewat WhatsApp, tanpa aplikasi tambahan. Dibalas cepat oleh Pak Tris.
             </p>
             <dl className="mt-4 grid grid-cols-3 gap-3 text-center">
               {heroStats.map((stat, idx) => (
@@ -182,7 +182,7 @@ export default function TemplateModern() {
           <figure className="mt-8 md:mt-0">
             <img
               src={settings?.hero_image || ""}
-              alt={`Mekanik ${shopName} menyetel pesanan di dapur`}
+              alt={`Ikan bakar khas ${shopName} yang baru matang di atas bara`}
               width={1200}
               height={912}
               fetchPriority="high"

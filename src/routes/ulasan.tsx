@@ -9,11 +9,11 @@ export const Route = createFileRoute("/ulasan")({
   head: () => ({
     meta: [
       {
-        title: "130+ Ulasan Pelanggan Ikanbakar99 Ungaran",
+        title: "Ulasan Pelanggan Ikan Bakar P. Tris — Puri Delta Sidoarjo",
       },
       {
         name: "description",
-        content: "Lihat galeri hasil pengerjaan dan ratusan ulasan asli pelanggan Ikanbakar99. Ikan Bakar paling direkomendasikan di Ungaran dan Semarang.",
+        content: "Lihat galeri menu dan ulasan asli pelanggan Ikan Bakar P. Tris, rumah makan ikan bakar di Perumahan Puri Delta, Sidoarjo.",
       },
     ],
   }),
@@ -24,7 +24,7 @@ function UlasanPage() {
   const { data: settings } = useQuery(siteSettingsQueryOptions);
   
   const shopName = settings?.shop_name || "Ikanbakar99";
-  const headerSubtitle = settings?.header_subtitle || "Ikanbakar99 - Ungaran";
+  const headerSubtitle = settings?.header_subtitle || "Rumah makan ikan bakar · Puri Delta";
 
   // Hitung rata-rata rating
   const totalReviews = reviewsData.length;
@@ -91,8 +91,8 @@ function UlasanPage() {
               Jadilah Bagian dari Bukti Kami!
             </h2>
             <p className="text-muted-foreground md:text-lg mb-6 leading-relaxed max-w-xl mx-auto">
-              Sudah merasakan sendiri kualitas servis dari mekanik kami? Tulis ulasan jujur Anda di Google Maps, 
-              tunjukkan ke dapur saat kunjungan berikutnya, dan dapatkan <strong className="text-primary font-bold">Diskon Khusus 10%</strong> untuk perawatan ringan!
+              Sudah mencoba ikan bakar kami? Tulis ulasan jujur Anda di Google Maps, 
+              tunjukkan saat kunjungan berikutnya, dan dapatkan <strong className="text-primary font-bold">Diskon Khusus 10%</strong> untuk pesanan berikutnya!
             </p>
             
             <a 
