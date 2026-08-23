@@ -75,7 +75,7 @@ export async function fetchReviews(): Promise<CustomerReview[]> {
 
   if (!data || data.length === 0) return FALLBACK_REVIEWS;
 
-  return data.map((row) => ({
+  return (data as any[]).map((row: any) => ({
     id: row.id,
     name: row.reviewer_name,
     stars: row.rating,
