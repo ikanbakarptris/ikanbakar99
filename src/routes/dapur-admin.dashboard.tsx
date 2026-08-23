@@ -107,7 +107,7 @@ function PrimaryButton({
 
 /* -------------------------------- Dashboard -------------------------------- */
 
-type TabId = "settings" | "hero" | "services" | "theme" | "media" | "reviews" | "ui" | "advanced";
+type TabId = "settings" | "hero" | "services" | "theme" | "media" | "reviews" | "ui" | "survey" | "advanced";
 
 const TABS = [
   { id: "settings", label: "Info dapur" },
@@ -1354,3 +1354,104 @@ body {
     </Panel>
   );
 }
+
+/* ---------------------------------- Survey Tab --------------------------------- */
+
+function SurveyTab() {
+  const { data: responses, isLoading, error } = useQuery({
+    queryKey: ['survey_responses'],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('survey_responses').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  const exportToCSV = () => {
+    if (!responses || responses.length === 0) return;
+    
+    // Create CSV header
+    const headers = ['Waktu', 'Nama', 'WhatsApp', 'Menu Favorit', 'Tingkat Pedas', 'Saran'];
+    
+    // Create CSV rows
+    const rows = responses.map(r => [
+      new Date(r.created_at).toLocaleString('id-ID'),
+      " + (r.nama || '').replace(/"/g, '""') + ",
+      " + (r.whatsapp || '').replace(/"/g, '""') + ",
+      " + (r.menu_favorit || '').replace(/"/g, '""') + ",
+      " + (r.tingkat_pedas || '').replace(/"/g, '""') + ",
+      " + (r.saran || '').replace(/"/g, '""') + "
+    ]);
+    
+    const csvContent = [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', kuesioner_ikanbakar99_.csv);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <Panel title="Hasil Kuesioner Warga" description="Data langsung dari warga Puri Delta / sekitarnya.">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 p-4 bg-muted/50 rounded-xl">
+          <div>
+            <p className="text-sm text-muted-foreground">Total Responden</p>
+            <p className="text-3xl font-display font-bold text-foreground">
+              {isLoading ? '...' : (responses?.length || 0)}
+            </p>
+          </div>
+          <PrimaryButton onClick={exportToCSV} disabled={!responses?.length}>
+            Download CSV
+          </PrimaryButton>
+        </div>
+
+        {error ? (
+          <div className="text-red-500 p-4 bg-red-50 rounded-lg">Gagal memuat data: {(error as Error).message}</div>
+        ) : isLoading ? (
+          <div className="py-8 text-center text-muted-foreground">Memuat data kuesioner...</div>
+        ) : responses?.length === 0 ? (
+          <div className="py-12 text-center text-muted-foreground border-2 border-dashed rounded-xl">
+            Belum ada warga yang mengisi kuesioner.<br/>
+            Bagikan link <strong>https://ikanbakar99.vercel.app/kuesioner</strong> ke grup WhatsApp warga!
+          </div>
+        ) : (
+          <div className="border rounded-lg overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left">
+                <thead className="text-xs text-muted-foreground uppercase bg-muted/50 border-b">
+                  <tr>
+                    <th className="px-4 py-3">Nama</th>
+                    <th className="px-4 py-3">Menu Favorit</th>
+                    <th className="px-4 py-3">Tingkat Pedas</th>
+                    <th className="px-4 py-3 hidden md:table-cell">Waktu</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y">
+                  {responses?.map((r, i) => (
+                    <tr key={i} className="bg-card hover:bg-muted/50 transition-colors">
+                      <td className="px-4 py-3 font-medium text-foreground">
+                        {r.nama}
+                        {r.whatsapp && <div className="text-xs font-normal text-muted-foreground mt-0.5">{r.whatsapp}</div>}
+                      </td>
+                      <td className="px-4 py-3">{r.menu_favorit}</td>
+                      <td className="px-4 py-3">{r.tingkat_pedas}</td>
+                      <td className="px-4 py-3 hidden md:table-cell text-muted-foreground text-xs">
+                        {new Date(r.created_at).toLocaleDateString('id-ID')}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </Panel>
+    </div>
+  );
+}
+
