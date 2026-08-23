@@ -13,22 +13,23 @@ export const Route = createFileRoute("/")({
   },
   head: () => ({
     meta: [
-      { title: "Ikanbakar99 — Ikan Bakar Ungaran | Spesialis Ikan Bakar & Ayam Bakar" },
+      { title: "Ikan Bakar P. Tris — Ikan Bakar Puri Delta Sidoarjo" },
       {
         name: "description",
         content:
-          "Ikan Bakar Ungaran: pesanan Ikan Bakar, Ayam Bakar, Nila, Gurameh. Rating 5.0 dari 130 ulasan. Layanan antar-jemput pesanan.",
+          "Lele bakar Rp10rb, ayam bule Rp10rb, nila Rp17rb, gurameh Rp30rb. Sambal terasi atau bawang, gratis antar area Puri Delta Sidoarjo.",
       },
-      { property: "og:title", content: "Ikanbakar99 — Ikan Bakar Ungaran" },
+      { property: "og:title", content: "Ikan Bakar P. Tris — Puri Delta Sidoarjo" },
       {
         property: "og:description",
         content:
-          "Servis pesanan presisi di Ungaran. Rating 5.0 (130 ulasan), antar-jemput pesanan, konsultasi via WhatsApp.",
+          "Ikan bakar bumbu meresap, dibakar dadakan setelah pesanan masuk. Pesan lewat WhatsApp, diantar hangat ke rumah.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+
   component: Index,
 });
 
