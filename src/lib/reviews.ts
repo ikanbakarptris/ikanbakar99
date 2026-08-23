@@ -39,27 +39,30 @@ export interface CustomerReview {
 const FALLBACK_REVIEWS: CustomerReview[] = [
   {
     id: "fallback-1",
-    name: "Sofia",
+    name: "Dewi Kurnia",
     stars: 5,
-    text: "Service excellent..pesanan bs diambl dirumah (area ungaran) dan diantar lagi kl sdh seleaai service. pengerjaan sangat cepat dan baik.",
+    text: "Lele bakarnya juara, bumbunya meresap dan sambal terasinya mantap. Sepuluh ribu dapat seporsi lengkap, worth it banget.",
+    role: "Puri Delta",
     isLocalGuide: true,
   },
   {
     id: "fallback-2",
-    name: "Sofian Hadi",
+    name: "Andi Prasetyo",
     stars: 5,
-    text: "Solutif, biaya terjangkau sesuai pekerjaan, part yg masih bisa dibenerin gak perlu asal ganti. Hasil maksimal. Bahkan kalau dekat beliau mau anterin pesanannya ke rumah.",
-    role: "Fiandigital",
+    text: "Pesan gurameh bakar buat keluarga, ikannya besar dan matangnya pas. Diantar masih hangat, fast response di WhatsApp.",
+    role: "Sidoarjo",
     isLocalGuide: false,
   },
   {
     id: "fallback-3",
-    name: "Titik Suryani",
+    name: "Rina Ayu",
     stars: 5,
-    text: "Alhamdulillah fast respon banget & biayanya juga bisa dibilang murah banget. Itu rumahku di Dampu, tapi bapaknya mau dateng. Pelayanannya juga ramah banget.",
-    isLocalGuide: true,
+    text: "Nila bakarnya tidak amis sama sekali, sambal bawangnya pedas nagih. Sekarang jadi langganan tiap akhir pekan.",
+    role: "Puri Delta",
+    isLocalGuide: false,
   },
 ];
+
 
 /** Fetches published reviews, oldest first. Public read (RLS allows anon SELECT). */
 export async function fetchReviews(): Promise<CustomerReview[]> {
@@ -75,7 +78,7 @@ export async function fetchReviews(): Promise<CustomerReview[]> {
 
   if (!data || data.length === 0) return FALLBACK_REVIEWS;
 
-  return data.map((row) => ({
+  return (data as any[]).map((row: any) => ({
     id: row.id,
     name: row.reviewer_name,
     stars: row.rating,

@@ -388,7 +388,7 @@ function HeroPanel() {
             />
           </div>
         </Field>
-        <Field label="Teks Label Kecil" htmlFor="hero_badge" hint="Contoh: Ungaran & sekitarnya">
+        <Field label="Teks Label Kecil" htmlFor="hero_badge" hint="Contoh: Puri Delta & sekitarnya">
           <input
             id="hero_badge"
             className={inputClass}
@@ -444,7 +444,9 @@ function ServicesPanel() {
 
   const updateService = (index: number, field: string, value: string) => {
     const updated = [...services];
-    updated[index] = { ...updated[index], [field]: value };
+    const current = updated[index];
+    if (!current) return;
+    updated[index] = { ...current, [field]: value };
     setForm({ ...form, services: updated });
   };
 
@@ -787,13 +789,13 @@ function MediaPanel() {
 
   function moveMedia(index: number, direction: 'up' | 'down') {
     const newList = [...mediaList];
-    if (direction === 'up' && index > 0) {
-      [newList[index - 1], newList[index]] = [newList[index], newList[index - 1]];
-    } else if (direction === 'down' && index < newList.length - 1) {
-      [newList[index + 1], newList[index]] = [newList[index], newList[index + 1]];
-    } else {
-      return;
-    }
+    const target = direction === 'up' ? index - 1 : index + 1;
+    if (target < 0 || target >= newList.length) return;
+    const a = newList[index];
+    const b = newList[target];
+    if (a === undefined || b === undefined) return;
+    newList[index] = b;
+    newList[target] = a;
     setForm({ ...form, carousel_images: newList });
   }
 
@@ -934,7 +936,11 @@ function ReviewsPanel() {
 
     // Buat salinan array dan tukar posisi dua elemen
     const newReviews = [...reviews];
-    [newReviews[index], newReviews[targetIdx]] = [newReviews[targetIdx], newReviews[index]];
+    const a = newReviews[index];
+    const b = newReviews[targetIdx];
+    if (!a || !b) return;
+    newReviews[index] = b;
+    newReviews[targetIdx] = a;
 
     // Tetapkan sort_order baru berdasarkan urutan index saat ini untuk semua item
     // Ini menyelesaikan masalah jika semua sort_order sebelumnya sama (misal 0 semua)

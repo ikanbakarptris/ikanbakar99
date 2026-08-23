@@ -12,7 +12,7 @@ interface Particle {
 
 export function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | undefined>(undefined);
   const particles = useRef<Particle[]>([]);
   const mouse = useRef({ x: -1000, y: -1000 });
 
@@ -121,7 +121,7 @@ export function ParticlesBackground() {
     // PERFORMANCE OPTIMIZATION: Intersection Observer to pause animation
     let isVisible = true;
     const observer = new IntersectionObserver((entries) => {
-      isVisible = entries[0].isIntersecting;
+      isVisible = entries[0]?.isIntersecting ?? false;
       if (isVisible) {
         drawParticles();
       } else if (animationFrameId.current) {

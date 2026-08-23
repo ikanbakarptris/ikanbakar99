@@ -6,7 +6,7 @@ export function AnimateIn({ children, className = "", delay = 0 }: { children: R
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
+      if (entry?.isIntersecting) {
         if (delay > 0) {
           setTimeout(() => setIsVisible(true), delay);
         } else {

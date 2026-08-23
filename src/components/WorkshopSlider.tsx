@@ -47,7 +47,7 @@ export function WorkshopSlider({ images }: { images?: string[] }) {
                 ) : (
                   <img
                     src={src}
-                    alt={`Dokumentasi dapur Ikanbakar99 ${i + 1}`}
+                    alt={`Dokumentasi dapur Ikan Bakar P. Tris ${i + 1}`}
                     width={800}
                     height={600}
                     loading={i === 0 ? "eager" : "lazy"}

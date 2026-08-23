@@ -228,7 +228,7 @@ export function CustomerReviews({
   reviews,
   isLoading = false,
   heading = "Galeri & ulasan pelanggan",
-  description = "Dokumentasi pengerjaan harian dan ulasan asli pengguna pesanan di Ungaran.",
+  description = "Dokumentasi masakan harian dan ulasan asli pelanggan di Puri Delta, Sidoarjo.",
   media,
   limit,
   showViewAll = false,

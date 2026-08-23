@@ -44,62 +44,88 @@ export interface SiteSettings {
   social_tiktok?: string | null;
   contact_email?: string | null;
   active_template?: string | null;
+  advanced_json_ld?: string | null;
+  advanced_css?: string | null;
+  advanced_head_scripts?: string | null;
   updated_at?: string;
 }
+
 
 export type SiteSettingsInput = Omit<SiteSettings, "id" | "updated_at">;
 
 export const DEFAULT_SETTINGS: SiteSettingsInput = {
-  whatsapp_number: "62895382966573",
+  whatsapp_number: "6282227459399",
   maps_url:
-    "https://www.google.com/maps/search/?api=1&query=Jl.+Bima+Panorama+Asri+blok+C22,+Ungaran",
-  theme_color: "#F59E0B",
+    "https://www.google.com/maps/search/?api=1&query=Ikan+Bakar+P.+Tris+Puri+Delta+Sidoarjo",
+  theme_color: "#DC2626",
   font_family: "Inter",
   carousel_images: [],
-  shop_name: "Ikanbakar99",
-  shop_address: "Jl. Bima Panorama Asri blok C22, Ungaran",
-  shop_hours: "Senin-Minggu - 08.00-20.00 WIB",
-  shop_rating: 5.0,
-  shop_reviews_count: 130,
-  hero_badge: "Ungaran & sekitarnya",
-  hero_title: "Rem blong di turunan bukan soal sial - itu soal servis asal-asalan.",
-  hero_desc_1: "Rantai loncat, velg goyang, gigi susah masuk. Dibiarkan seminggu, biaya perbaikan bisa berlipat - dan risikonya kamu bawa ke jalan menurun Ungaran.",
-  hero_desc_2: "Di Ikanbakar99, setiap pesanan diperiksa menyeluruh, dikerjakan dengan alat ukur yang benar, dan kondisinya dilaporkan sebelum dieksekusi. Bisa antar-jemput.",
+  shop_name: "Ikan Bakar P. Tris",
+  shop_address: "Perumahan Puri Delta Sidoarjo",
+  shop_hours: "Setiap hari - 10.00-21.00 WIB",
+  shop_rating: 4.9,
+  shop_reviews_count: 87,
+  hero_badge: "Puri Delta & sekitarnya",
+  hero_title: "Ikan bakar bumbu meresap, dibakar dadakan begitu pesanan masuk.",
+  hero_desc_1:
+    "Ikan segar pilihan, dibumbui sejak dini hari, lalu dibakar di atas bara sampai wangi dan tidak amis.",
+  hero_desc_2:
+    "Pesan lewat WhatsApp, kami antar hangat ke rumah Anda di area Puri Delta dan sekitarnya. Lengkap dengan sambal terasi atau sambal bawang.",
   hero_image: null,
   hero_stats: [
-    { value: "5.0", label: "130 ulasan" },
-    { value: "1 hari", label: "servis ringan" },
-    { value: "Gratis", label: "antar-jemput*" }
+    { value: "Rp 10rb", label: "mulai dari" },
+    { value: "30 menit", label: "siap diantar" },
+    { value: "Gratis", label: "antar area Puri Delta" },
   ],
   services: [
     {
-      title: "Servis Ringan",
-      desc: "Setel rem, oper gigi, pelumasan rantai, dan cek tekanan ban. pesanan enteng lagi dalam hitungan jam.",
-      price: "Mulai Rp 50.000",
-      icon: "🔧"
+      title: "Lele Bakar",
+      desc: "Menu Boom. Lele segar bumbu rempah, dibakar garing di luar lembut di dalam. Gratis sambal pilihan.",
+      price: "Rp 10.000",
+      icon: "🔥",
     },
     {
-      title: "Setel Velg / Jari-jari",
-      desc: "Velg peyang atau jari-jari kendor kami setel presisi pakai truing stand, bukan kira-kira.",
-      price: "Mulai Rp 75.000",
-      icon: "⚙️"
-    }
+      title: "Ayam Bule Bakar",
+      desc: "Ayam empuk dengan bumbu bakar manis gurih, cocok untuk yang tidak makan ikan.",
+      price: "Rp 10.000",
+      icon: "🍗",
+    },
+    {
+      title: "Nila Bakar",
+      desc: "Nila ukuran besar, daging tebal dan bumbu meresap sampai ke tulang.",
+      price: "Rp 17.000",
+      icon: "🐟",
+    },
+    {
+      title: "Gurameh Bakar",
+      desc: "Menu spesial untuk keluarga. Gurameh pilihan dibakar utuh, porsi puas untuk 2-3 orang.",
+      price: "Rp 30.000",
+      icon: "⭐",
+    },
+    {
+      title: "Sambal Terasi & Sambal Bawang",
+      desc: "Sambal ulek dadakan, bisa pilih terasi atau bawang. Pedasnya bisa diatur sesuai selera.",
+      price: "Gratis tiap porsi",
+      icon: "🌶️",
+    },
   ],
-  header_subtitle: "Ikan Bakar · Ungaran",
-  services_title: "Layanan kami",
-  services_subtitle: "Harga transparan, dikonfirmasi dulu sebelum dikerjakan.",
+  header_subtitle: "Rumah makan ikan bakar · Puri Delta",
+  services_title: "Menu kami",
+  services_subtitle: "Harga jujur, porsi mengenyangkan, dibakar setelah pesanan masuk.",
   trust_rating_text: "ulasan pelanggan",
-  trust_pickup_title: "Pickup & Drop-off",
-  trust_pickup_desc: "pesanan kami jemput di rumah kamu dan diantar kembali setelah selesai. Gratis untuk radius 5 km dari dapur, di luar itu ada biaya ringan.",
-  address_title: "Alamat dapur",
-  cta_whatsapp_text: "Konsultasi via WhatsApp",
+  trust_pickup_title: "Antar & Ambil Sendiri",
+  trust_pickup_desc:
+    "Gratis ongkir untuk area Perumahan Puri Delta. Di luar itu ada tambahan ongkir ringan. Bisa juga ambil sendiri ke rumah makan.",
+  address_title: "Alamat rumah makan",
+  cta_whatsapp_text: "Pesan via WhatsApp",
   cta_maps_text: "Petunjuk Arah",
-  social_facebook: "https://facebook.com/ikanbakar99",
-  social_instagram: "https://instagram.com/ikanbakar99",
-  social_tiktok: "https://tiktok.com/@ikanbakar99",
-  contact_email: "info@hkebike.com",
-  active_template: "modern"
+  social_facebook: null,
+  social_instagram: null,
+  social_tiktok: null,
+  contact_email: null,
+  active_template: "modern",
 };
+
 
 /** Untyped table handle — `site_settings` is absent from the generated types. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
