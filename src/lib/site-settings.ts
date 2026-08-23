@@ -110,8 +110,8 @@ export const DEFAULT_SETTINGS: SiteSettingsInput = {
     },
   ],
   header_subtitle: "Rumah makan ikan bakar · Puri Delta",
-  services_title: "Menu kami",
-  services_subtitle: "Harga jujur, porsi mengenyangkan, dibakar setelah pesanan masuk.",
+  services_title: "Menu Spesial Kami",
+  services_subtitle: "Bumbu meresap sempurna, dibakar mendadak setelah pesanan masuk.",
   trust_rating_text: "ulasan pelanggan",
   trust_pickup_title: "Antar & Ambil Sendiri",
   trust_pickup_desc:
