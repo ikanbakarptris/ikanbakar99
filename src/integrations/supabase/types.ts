@@ -14,36 +14,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      reviews: {
-        Row: {
-          created_at: string
-          id: string
-          is_local_guide: boolean
-          rating: number
-          review_text: string
-          reviewer_name: string
-          reviewer_role: string | null
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          is_local_guide?: boolean
-          rating?: number
-          review_text: string
-          reviewer_name: string
-          reviewer_role?: string | null
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          is_local_guide?: boolean
-          rating?: number
-          review_text?: string
-          reviewer_name?: string
-          reviewer_role?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
