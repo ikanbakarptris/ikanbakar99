@@ -305,34 +305,35 @@ export default function TemplateModern() {
 
       <section className="mx-auto max-w-5xl px-4 py-10" aria-labelledby="faq">
         <h2 id="faq" className="text-2xl font-bold md:text-3xl text-center mb-8">
-          Pertanyaan Seputar dapur
+          Pertanyaan Seputar Pesanan
         </h2>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-colors">
-            <h3 className="font-bold text-base">Di mana Ikan Bakar terdekat di Ungaran Timur?</h3>
+            <h3 className="font-bold text-base">Di mana lokasi {shopName}?</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Ikanbakar99 berlokasi strategis di Jl. Bima Panorama Asri blok C22, Ungaran, Kec. Ungaran Timur. Kami adalah klinik spesialis pesanan yang mudah dijangkau dari pusat kota Semarang maupun area Ungaran sekitarnya.
+              Kami berada di {shopAddress}. Buka {shopHours}, melayani makan di tempat, ambil sendiri, maupun pesan antar untuk area Puri Delta dan sekitarnya.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-colors">
-            <h3 className="font-bold text-base">Apakah melayani antar-jemput pesanan?</h3>
+            <h3 className="font-bold text-base">Berapa lama pesanan siap?</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Tentu saja! Kami memiliki layanan Pickup & Drop-off (Antar-Jemput) khusus untuk Anda yang sibuk. Gratis biaya antar-jemput untuk radius 5 km dari lokasi dapur kami.
+              Ikan dibakar setelah pesanan masuk supaya selalu hangat. Rata-rata 20-30 menit sudah siap diantar atau diambil, tergantung jumlah porsi dan antrean.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-colors">
-            <h3 className="font-bold text-base">Bisa rakit pesanan custom atau restorasi?</h3>
+            <h3 className="font-bold text-base">Apa saja pilihan sambalnya?</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Bisa. Mekanik ahli kami berpengalaman dalam merakit pesanan custom (road bike, MTB, seli) dari nol, melakukan upgrade groupset, hingga restorasi total pesanan klasik dengan tingkat presisi tinggi.
+              Tersedia sambal terasi dan sambal bawang, diulek dadakan setiap hari. Gratis di setiap porsi dan tingkat pedasnya bisa diminta sesuai selera.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-colors">
-            <h3 className="font-bold text-base">Menerima jasa setel velg (Wheel Truing)?</h3>
+            <h3 className="font-bold text-base">Bisa pesan untuk acara atau porsi banyak?</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Sangat bisa. Kami menggunakan alat ukur khusus (truing stand) untuk meluruskan velg peyang atau jari-jari kendor secara presisi, sehingga roda berputar lurus sempurna tanpa wobble.
+              Bisa. Untuk pesanan arisan, syukuran, atau kantor, kabari lewat WhatsApp minimal sehari sebelumnya agar ikan dan bumbu kami siapkan cukup.
             </p>
           </div>
         </div>
+
       </section>
 
       <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground bg-muted/30">
