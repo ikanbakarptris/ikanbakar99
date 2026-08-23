@@ -13,17 +13,17 @@ export const Route = createFileRoute("/")({
   },
   head: () => ({
     meta: [
-      { title: "Agung Bike Station — Bengkel Sepeda Bandungan | Servis & Setel Velg" },
+      { title: "Ikanbakar99 — Ikan Bakar Ungaran | Spesialis Ikan Bakar & Ayam Bakar" },
       {
         name: "description",
         content:
-          "Bengkel sepeda Bandungan: servis ringan, setel velg/jari-jari, upgrade, perakitan, cek unit. Rating 5.0 dari 130 ulasan. Layanan antar-jemput sepeda.",
+          "Ikan Bakar Ungaran: pesanan Ikan Bakar, Ayam Bakar, Nila, Gurameh. Rating 5.0 dari 130 ulasan. Layanan antar-jemput pesanan.",
       },
-      { property: "og:title", content: "Agung Bike Station — Bengkel Sepeda Bandungan" },
+      { property: "og:title", content: "Ikanbakar99 — Ikan Bakar Ungaran" },
       {
         property: "og:description",
         content:
-          "Servis sepeda presisi di Bandungan. Rating 5.0 (130 ulasan), antar-jemput sepeda, konsultasi via WhatsApp.",
+          "Servis pesanan presisi di Ungaran. Rating 5.0 (130 ulasan), antar-jemput pesanan, konsultasi via WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

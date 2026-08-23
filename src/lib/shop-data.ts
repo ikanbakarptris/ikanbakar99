@@ -1,10 +1,10 @@
 
 export const SHOP = {
-  name: "Agung Bike Station",
-  address: "Jl. Bima Panorama Asri blok C22, Bandungan",
+  name: "Ikanbakar99",
+  address: "Jl. Bima Panorama Asri blok C22, Ungaran",
   whatsapp:
-    "https://wa.me/62895382966573?text=Halo%20Agung%20Bike%20Station%2C%20saya%20mau%20konsultasi%20servis%20sepeda",
-  maps: "https://www.google.com/maps/search/?api=1&query=Jl.+Bima+Panorama+Asri+blok+C22,+Bandungan",
+    "https://wa.me/62895382966573?text=Halo%20Agung%20Bike%20Station%2C%20saya%20mau%20konsultasi%20servis%20pesanan",
+  maps: "https://www.google.com/maps/search/?api=1&query=Jl.+Bima+Panorama+Asri+blok+C22,+Ungaran",
   rating: 5.0,
   reviews: 130,
   hours: "Senin–Minggu · 08.00–20.00 WIB",
@@ -13,7 +13,7 @@ export const SHOP = {
 export const SERVICES = [
   {
     title: "Servis Ringan",
-    desc: "Setel rem, oper gigi, pelumasan rantai, dan cek tekanan ban. Sepeda enteng lagi dalam hitungan jam.",
+    desc: "Setel rem, oper gigi, pelumasan rantai, dan cek tekanan ban. pesanan enteng lagi dalam hitungan jam.",
     price: "Mulai Rp 50.000",
     icon: "🔧",
   },
@@ -25,19 +25,19 @@ export const SERVICES = [
   },
   {
     title: "Upgrade & Restorasi",
-    desc: "Ganti groupset, wheelset, sampai restorasi sepeda jadul jadi layak jalan dan enak dipandang.",
+    desc: "Ganti groupset, wheelset, sampai restorasi pesanan jadul jadi layak jalan dan enak dipandang.",
     price: "Konsultasi dulu",
     icon: "✨",
   },
   {
     title: "Perakitan",
-    desc: "Rakit sepeda baru atau custom build dari frame kosong, torsi sesuai spesifikasi pabrikan.",
+    desc: "Rakit pesanan baru atau custom build dari frame kosong, torsi sesuai spesifikasi pabrikan.",
     price: "Mulai Rp 250.000",
     icon: "🚲",
   },
   {
-    title: "Cek Unit Sepeda",
-    desc: "Mau beli sepeda seken? Kami periksa frame, drivetrain, dan wheelset sebelum uang melayang.",
+    title: "Cek Unit pesanan",
+    desc: "Mau beli pesanan seken? Kami periksa frame, drivetrain, dan wheelset sebelum uang melayang.",
     price: "Mulai Rp 100.000",
     icon: "🔍",
   },

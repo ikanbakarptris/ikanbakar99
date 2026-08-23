@@ -10,10 +10,10 @@ export const Route = createFileRoute("/dapur-admin/")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Masuk Panel — Agung Bike Station" },
-      { name: "description", content: "Halaman masuk pengelola konten Agung Bike Station." },
+      { title: "Masuk Panel — Ikanbakar99" },
+      { name: "description", content: "Halaman masuk pengelola konten Ikanbakar99." },
       { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: "Masuk Panel — Agung Bike Station" },
+      { property: "og:title", content: "Masuk Panel — Ikanbakar99" },
       { property: "og:description", content: "Halaman masuk pengelola konten." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -90,7 +90,7 @@ function AdminLoginPage() {
             Panel Pengelola
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Masuk untuk mengelola konten Agung Bike Station.
+            Masuk untuk mengelola konten Ikanbakar99.
           </p>
         </header>
 

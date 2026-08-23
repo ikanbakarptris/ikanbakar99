@@ -8,10 +8,10 @@ export const Route = createFileRoute("/dapur-admin/reset-password")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Atur Ulang Kata Sandi — Agung Bike Station" },
-      { name: "description", content: "Halaman atur ulang kata sandi pengelola Agung Bike Station." },
+      { title: "Atur Ulang Kata Sandi — Ikanbakar99" },
+      { name: "description", content: "Halaman atur ulang kata sandi pengelola Ikanbakar99." },
       { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: "Atur Ulang Kata Sandi — Agung Bike Station" },
+      { property: "og:title", content: "Atur Ulang Kata Sandi — Ikanbakar99" },
       { property: "og:description", content: "Halaman atur ulang kata sandi pengelola." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

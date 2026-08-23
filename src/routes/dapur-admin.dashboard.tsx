@@ -32,11 +32,11 @@ export const Route = createFileRoute("/dapur-admin/dashboard")({
   },
   head: () => ({
     meta: [
-      { title: "Dashboard Pengelola — Agung Bike Station" },
-      { name: "description", content: "Kelola pengaturan, media, dan ulasan Agung Bike Station." },
+      { title: "Dashboard Pengelola — Ikanbakar99" },
+      { name: "description", content: "Kelola pengaturan, media, dan ulasan Ikanbakar99." },
       { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: "Dashboard Pengelola — Agung Bike Station" },
-      { property: "og:description", content: "Panel pengelolaan konten bengkel." },
+      { property: "og:title", content: "Dashboard Pengelola — Ikanbakar99" },
+      { property: "og:description", content: "Panel pengelolaan konten dapur." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -110,7 +110,7 @@ function PrimaryButton({
 type TabId = "settings" | "hero" | "services" | "theme" | "media" | "reviews" | "ui" | "advanced";
 
 const TABS = [
-  { id: "settings", label: "Info Bengkel" },
+  { id: "settings", label: "Info dapur" },
   { id: "hero", label: "Hero (Teks Utama)" },
   { id: "services", label: "Layanan" },
   { id: "theme", label: "Tema" },
@@ -138,7 +138,7 @@ function AdminDashboard() {
         <div className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3">
           <div>
             <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              Agung Bike Station
+              Ikanbakar99
             </p>
             <h1 className="font-display text-lg font-bold text-foreground">Dashboard Pengelola</h1>
           </div>
@@ -231,7 +231,7 @@ function GlobalSettingsPanel() {
 
   return (
     <Panel
-      title="Informasi Bengkel"
+      title="Informasi dapur"
       description="Nama, alamat, jam operasional, dan info dasar lainnya."
     >
       <form
@@ -241,7 +241,7 @@ function GlobalSettingsPanel() {
           mutation.mutate(form);
         }}
       >
-        <Field label="Nama Bengkel" htmlFor="shop_name">
+        <Field label="Nama dapur" htmlFor="shop_name">
           <input
             id="shop_name"
             className={inputClass}
@@ -249,7 +249,7 @@ function GlobalSettingsPanel() {
             onChange={(e) => setForm({ ...form, shop_name: e.target.value })}
           />
         </Field>
-        <Field label="Alamat Bengkel" htmlFor="shop_address">
+        <Field label="Alamat dapur" htmlFor="shop_address">
           <textarea
             id="shop_address"
             className={inputClass}
@@ -388,7 +388,7 @@ function HeroPanel() {
             />
           </div>
         </Field>
-        <Field label="Teks Label Kecil" htmlFor="hero_badge" hint="Contoh: Bandungan & sekitarnya">
+        <Field label="Teks Label Kecil" htmlFor="hero_badge" hint="Contoh: Ungaran & sekitarnya">
           <input
             id="hero_badge"
             className={inputClass}
@@ -453,7 +453,7 @@ function ServicesPanel() {
   };
 
   return (
-    <Panel title="Daftar Layanan" description="Kelola layanan bengkel dan harga yang ditampilkan.">
+    <Panel title="Daftar Layanan" description="Kelola layanan dapur dan harga yang ditampilkan.">
       <div className="space-y-4">
         {services.map((s, i) => (
           <div key={i} className="rounded-xl border border-border p-4 bg-card/50 space-y-3">
@@ -529,7 +529,7 @@ function ServicesPanel() {
 const FONT_OPTIONS = ["Inter", "Barlow Condensed", "Poppins", "Rubik", "Work Sans"];
 
 const THEME_TEMPLATES = [
-  { name: "Agung Bike (Default)", color: "#F59E0B", font: "Inter" },
+  { name: "Ikanbakar99 (Default)", color: "#F59E0B", font: "Inter" },
   { name: "Racing Red", color: "#DC2626", font: "Barlow Condensed" },
   { name: "Forest Green", color: "#16A34A", font: "Work Sans" },
   { name: "Ocean Blue", color: "#2563EB", font: "Poppins" },
@@ -849,7 +849,7 @@ function MediaPanel() {
   return (
     <Panel
       title="Media Gallery (Supabase)"
-      description="Kelola foto dan video bengkel yang tampil di halaman depan. Anda bisa mengatur urutan dengan tombol panah."
+      description="Kelola foto dan video dapur yang tampil di halaman depan. Anda bisa mengatur urutan dengan tombol panah."
     >
       <div className="space-y-6">
         <div className="rounded-xl border border-border bg-muted/20 p-5 text-center">
@@ -1021,16 +1021,16 @@ function ReviewsPanel() {
               placeholder="https://maps.app.goo.gl/..."
             />
           </Field>
-          <Field label="Kategori Tipe Sepeda (opsional)" htmlFor="r-bike" hint="Contoh: MTB, Roadbike, Seli, Minion, BMX">
+          <Field label="Menu Pesanan (opsional)" htmlFor="r-bike" hint="Contoh: Lele Bakar, Ayam Bule, Nila, Gurameh">
             <input
               id="r-bike"
               className={inputClass}
               value={form.bike_type || ""}
               onChange={(e) => setForm({ ...form, bike_type: e.target.value })}
-              placeholder="MTB / Roadbike / Lipat"
+              placeholder="Lele / Ayam / Nila"
             />
           </Field>
-          <Field label="Balasan Pemilik (opsional)" htmlFor="r-reply" hint="Balasan publik dari Pak Agung (meningkatkan kepercayaan).">
+          <Field label="Balasan Pemilik (opsional)" htmlFor="r-reply" hint="Balasan publik dari Pak Sutrisno (meningkatkan kepercayaan).">
             <textarea
               id="r-reply"
               className={inputClass}
@@ -1286,9 +1286,9 @@ function AdvancedPanel() {
             <div className="flex-1 space-y-2">
               <h4 className="text-sm font-semibold">2. Skema Pencarian (Custom JSON-LD)</h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong>Kegunaan:</strong> Membantu robot Google memahami bahwa website ini adalah "Bengkel Sepeda", sehingga SEO lokal Anda lebih kuat.
+                <strong>Kegunaan:</strong> Membantu robot Google memahami bahwa website ini adalah "Ikan Bakar", sehingga SEO lokal Anda lebih kuat.
                 <br/><br/>
-                <strong>Penting:</strong> Jika dikosongkan, sistem kami <strong>sudah otomatis</strong> membuatkan skema yang sangat baik berdasarkan info di tab "Info Bengkel". Isi ini HANYA jika Pakar SEO Anda meminta format khusus.
+                <strong>Penting:</strong> Jika dikosongkan, sistem kami <strong>sudah otomatis</strong> membuatkan skema yang sangat baik berdasarkan info di tab "Info dapur". Isi ini HANYA jika Pakar SEO Anda meminta format khusus.
               </p>
             </div>
             <div className="w-full md:w-[60%] shrink-0">
@@ -1297,7 +1297,7 @@ function AdvancedPanel() {
                 placeholder='{
   "@context": "https://schema.org",
   "@type": "AutoRepair",
-  "name": "Agung Bike Station"
+  "name": "Ikanbakar99"
 }'
                 value={form.advanced_json_ld || ""}
                 onChange={(e) => setForm({ ...form, advanced_json_ld: e.target.value })}

@@ -9,11 +9,11 @@ export const Route = createFileRoute("/ulasan")({
   head: () => ({
     meta: [
       {
-        title: "130+ Ulasan Pelanggan Agung Bike Station Bandungan",
+        title: "130+ Ulasan Pelanggan Ikanbakar99 Ungaran",
       },
       {
         name: "description",
-        content: "Lihat galeri hasil pengerjaan dan ratusan ulasan asli pelanggan Agung Bike Station. Bengkel sepeda paling direkomendasikan di Bandungan dan Semarang.",
+        content: "Lihat galeri hasil pengerjaan dan ratusan ulasan asli pelanggan Ikanbakar99. Ikan Bakar paling direkomendasikan di Ungaran dan Semarang.",
       },
     ],
   }),
@@ -23,8 +23,8 @@ function UlasanPage() {
   const { data: reviewsData = [], isLoading: isLoadingReviews } = useQuery(reviewsQueryOptions);
   const { data: settings } = useQuery(siteSettingsQueryOptions);
   
-  const shopName = settings?.shop_name || "Agung Bike Station";
-  const headerSubtitle = settings?.header_subtitle || "Bengkel sepeda - Bandungan";
+  const shopName = settings?.shop_name || "Ikanbakar99";
+  const headerSubtitle = settings?.header_subtitle || "Ikanbakar99 - Ungaran";
 
   // Hitung rata-rata rating
   const totalReviews = reviewsData.length;
@@ -92,7 +92,7 @@ function UlasanPage() {
             </h2>
             <p className="text-muted-foreground md:text-lg mb-6 leading-relaxed max-w-xl mx-auto">
               Sudah merasakan sendiri kualitas servis dari mekanik kami? Tulis ulasan jujur Anda di Google Maps, 
-              tunjukkan ke bengkel saat kunjungan berikutnya, dan dapatkan <strong className="text-primary font-bold">Diskon Khusus 10%</strong> untuk perawatan ringan!
+              tunjukkan ke dapur saat kunjungan berikutnya, dan dapatkan <strong className="text-primary font-bold">Diskon Khusus 10%</strong> untuk perawatan ringan!
             </p>
             
             <a 

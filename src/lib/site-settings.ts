@@ -52,19 +52,19 @@ export type SiteSettingsInput = Omit<SiteSettings, "id" | "updated_at">;
 export const DEFAULT_SETTINGS: SiteSettingsInput = {
   whatsapp_number: "62895382966573",
   maps_url:
-    "https://www.google.com/maps/search/?api=1&query=Jl.+Bima+Panorama+Asri+blok+C22,+Bandungan",
+    "https://www.google.com/maps/search/?api=1&query=Jl.+Bima+Panorama+Asri+blok+C22,+Ungaran",
   theme_color: "#F59E0B",
   font_family: "Inter",
   carousel_images: [],
-  shop_name: "Agung Bike Station",
-  shop_address: "Jl. Bima Panorama Asri blok C22, Bandungan",
+  shop_name: "Ikanbakar99",
+  shop_address: "Jl. Bima Panorama Asri blok C22, Ungaran",
   shop_hours: "Senin-Minggu - 08.00-20.00 WIB",
   shop_rating: 5.0,
   shop_reviews_count: 130,
-  hero_badge: "Bandungan & sekitarnya",
+  hero_badge: "Ungaran & sekitarnya",
   hero_title: "Rem blong di turunan bukan soal sial - itu soal servis asal-asalan.",
-  hero_desc_1: "Rantai loncat, velg goyang, gigi susah masuk. Dibiarkan seminggu, biaya perbaikan bisa berlipat - dan risikonya kamu bawa ke jalan menurun Bandungan.",
-  hero_desc_2: "Di Agung Bike Station, setiap sepeda diperiksa menyeluruh, dikerjakan dengan alat ukur yang benar, dan kondisinya dilaporkan sebelum dieksekusi. Bisa antar-jemput.",
+  hero_desc_1: "Rantai loncat, velg goyang, gigi susah masuk. Dibiarkan seminggu, biaya perbaikan bisa berlipat - dan risikonya kamu bawa ke jalan menurun Ungaran.",
+  hero_desc_2: "Di Ikanbakar99, setiap pesanan diperiksa menyeluruh, dikerjakan dengan alat ukur yang benar, dan kondisinya dilaporkan sebelum dieksekusi. Bisa antar-jemput.",
   hero_image: null,
   hero_stats: [
     { value: "5.0", label: "130 ulasan" },
@@ -74,7 +74,7 @@ export const DEFAULT_SETTINGS: SiteSettingsInput = {
   services: [
     {
       title: "Servis Ringan",
-      desc: "Setel rem, oper gigi, pelumasan rantai, dan cek tekanan ban. Sepeda enteng lagi dalam hitungan jam.",
+      desc: "Setel rem, oper gigi, pelumasan rantai, dan cek tekanan ban. pesanan enteng lagi dalam hitungan jam.",
       price: "Mulai Rp 50.000",
       icon: "🔧"
     },
@@ -85,18 +85,18 @@ export const DEFAULT_SETTINGS: SiteSettingsInput = {
       icon: "⚙️"
     }
   ],
-  header_subtitle: "Bengkel sepeda · Bandungan",
+  header_subtitle: "Ikan Bakar · Ungaran",
   services_title: "Layanan kami",
   services_subtitle: "Harga transparan, dikonfirmasi dulu sebelum dikerjakan.",
   trust_rating_text: "ulasan pelanggan",
   trust_pickup_title: "Pickup & Drop-off",
-  trust_pickup_desc: "Sepeda kami jemput di rumah kamu dan diantar kembali setelah selesai. Gratis untuk radius 5 km dari bengkel, di luar itu ada biaya ringan.",
-  address_title: "Alamat bengkel",
+  trust_pickup_desc: "pesanan kami jemput di rumah kamu dan diantar kembali setelah selesai. Gratis untuk radius 5 km dari dapur, di luar itu ada biaya ringan.",
+  address_title: "Alamat dapur",
   cta_whatsapp_text: "Konsultasi via WhatsApp",
   cta_maps_text: "Petunjuk Arah",
-  social_facebook: "https://facebook.com/AgungBikeStation",
-  social_instagram: "https://instagram.com/AgungBikeStation",
-  social_tiktok: "https://tiktok.com/@agungbikestation",
+  social_facebook: "https://facebook.com/ikanbakar99",
+  social_instagram: "https://instagram.com/ikanbakar99",
+  social_tiktok: "https://tiktok.com/@ikanbakar99",
   contact_email: "info@hkebike.com",
   active_template: "modern"
 };

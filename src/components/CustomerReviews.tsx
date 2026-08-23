@@ -83,13 +83,13 @@ function ReviewCard({ review }: { review: CustomerReview }) {
   };
 
   const handleShare = async () => {
-    const text = `Lihat ulasan dari ${review.name} untuk Agung Bike Station: "${review.text}"`;
+    const text = `Lihat ulasan dari ${review.name} untuk Ikanbakar99: "${review.text}"`;
     const url = window.location.origin + "/ulasan";
     
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Ulasan Agung Bike Station',
+          title: 'Ulasan Ikanbakar99',
           text: text,
           url: url
         });
@@ -228,7 +228,7 @@ export function CustomerReviews({
   reviews,
   isLoading = false,
   heading = "Galeri & ulasan pelanggan",
-  description = "Dokumentasi pengerjaan harian dan ulasan asli pengguna sepeda di Bandungan.",
+  description = "Dokumentasi pengerjaan harian dan ulasan asli pengguna pesanan di Ungaran.",
   media,
   limit,
   showViewAll = false,

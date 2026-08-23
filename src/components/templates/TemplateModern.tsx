@@ -41,7 +41,7 @@ function MapsCta({ className = "", url, text }: { className?: string, url?: stri
       rel="noopener noreferrer"
       className={`inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-border bg-card px-6 text-base font-semibold text-foreground hover:-translate-y-0.5 hover:shadow-md hover:border-foreground/20 transition-all duration-300 active:scale-95 ${className}`}
     >
-      {text || "Petunjuk Arah ke Bengkel"}
+      {text || "Petunjuk Arah ke dapur"}
     </a>
   );
 }
@@ -50,24 +50,24 @@ export default function TemplateModern() {
   const { data: reviews, isPending } = useQuery(reviewsQueryOptions);
   const { data: settings } = useQuery(siteSettingsQueryOptions);
 
-  const shopName = settings?.shop_name || "Agung Bike Station";
+  const shopName = settings?.shop_name || "Ikanbakar99";
   const shopRating = settings?.shop_rating || 5.0;
   const shopReviewsCount = settings?.shop_reviews_count || 130;
   const shopHours = settings?.shop_hours || "Senin-Minggu - 08.00-20.00 WIB";
-  const shopAddress = settings?.shop_address || "Jl. Bima Panorama Asri blok C22, Bandungan";
+  const shopAddress = settings?.shop_address || "Jl. Bima Panorama Asri blok C22, Ungaran";
 
-  const headerSubtitle = settings?.header_subtitle || "Bengkel sepeda · Bandungan";
+  const headerSubtitle = settings?.header_subtitle || "Ikan Bakar · Ungaran";
   const servicesTitle = settings?.services_title || "Layanan kami";
   const servicesSubtitle = settings?.services_subtitle || "Harga transparan, dikonfirmasi dulu sebelum dikerjakan.";
   const trustRatingText = settings?.trust_rating_text || "ulasan pelanggan";
   const trustPickupTitle = settings?.trust_pickup_title || "Pickup & Drop-off";
-  const trustPickupDesc = settings?.trust_pickup_desc || "Sepeda kami jemput di rumah kamu dan diantar kembali setelah selesai. Gratis untuk radius 5 km dari bengkel, di luar itu ada biaya ringan.";
-  const addressTitle = settings?.address_title || "Alamat bengkel";
+  const trustPickupDesc = settings?.trust_pickup_desc || "pesanan kami jemput di rumah kamu dan diantar kembali setelah selesai. Gratis untuk radius 5 km dari dapur, di luar itu ada biaya ringan.";
+  const addressTitle = settings?.address_title || "Alamat dapur";
 
-  const heroBadge = settings?.hero_badge || "Bandungan & sekitarnya";
+  const heroBadge = settings?.hero_badge || "Ungaran & sekitarnya";
   const heroTitle = settings?.hero_title || "Rem blong di turunan bukan soal sial - itu soal servis asal-asalan.";
-  const heroDesc1 = settings?.hero_desc_1 || "Rantai loncat, velg goyang, gigi susah masuk. Dibiarkan seminggu, biaya perbaikan bisa berlipat - dan risikonya kamu bawa ke jalan menurun Bandungan.";
-  const heroDesc2 = settings?.hero_desc_2 || `Di ${shopName}, setiap sepeda diperiksa menyeluruh, dikerjakan dengan alat ukur yang benar, dan kondisinya dilaporkan sebelum dieksekusi. Bisa antar-jemput.`;
+  const heroDesc1 = settings?.hero_desc_1 || "Rantai loncat, velg goyang, gigi susah masuk. Dibiarkan seminggu, biaya perbaikan bisa berlipat - dan risikonya kamu bawa ke jalan menurun Ungaran.";
+  const heroDesc2 = settings?.hero_desc_2 || `Di ${shopName}, setiap pesanan diperiksa menyeluruh, dikerjakan dengan alat ukur yang benar, dan kondisinya dilaporkan sebelum dieksekusi. Bisa antar-jemput.`;
   const heroStats = settings?.hero_stats || [
     { value: "5.0", label: "130 ulasan" },
     { value: "1 hari", label: "servis ringan" },
@@ -77,7 +77,7 @@ export default function TemplateModern() {
   const servicesList = settings?.services && settings.services.length > 0 ? settings.services : [
     {
       title: "Servis Ringan",
-      desc: "Setel rem, oper gigi, pelumasan rantai, dan cek tekanan ban. Sepeda enteng lagi dalam hitungan jam.",
+      desc: "Setel rem, oper gigi, pelumasan rantai, dan cek tekanan ban. pesanan enteng lagi dalam hitungan jam.",
       price: "Mulai Rp 50.000",
       icon: "🔧",
     },
@@ -96,7 +96,7 @@ export default function TemplateModern() {
   const dynamicWaUrl = settings?.whatsapp_number ? `https://wa.me/${settings.whatsapp_number.replace(/[^0-9]/g, '')}` : SHOP.whatsapp;
   const dynamicMapsUrl = settings?.maps_url || SHOP.maps;
   const ctaWaText = settings?.cta_whatsapp_text || "Konsultasi Servis via WhatsApp";
-  const ctaMapsText = settings?.cta_maps_text || "Petunjuk Arah ke Bengkel";
+  const ctaMapsText = settings?.cta_maps_text || "Petunjuk Arah ke dapur";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -108,7 +108,7 @@ export default function TemplateModern() {
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Jl. Bima Panorama Asri blok C22",
-      "addressLocality": "Bandungan, Kalongan",
+      "addressLocality": "Ungaran, Kalongan",
       "addressRegion": "Jawa Tengah",
       "postalCode": "50519",
       "addressCountry": "ID"
@@ -200,7 +200,7 @@ export default function TemplateModern() {
           <figure className="mt-8 md:mt-0">
             <img
               src={settings?.hero_image || ""}
-              alt={`Mekanik ${shopName} menyetel sepeda di bengkel`}
+              alt={`Mekanik ${shopName} menyetel pesanan di dapur`}
               width={1200}
               height={912}
               fetchPriority="high"
@@ -322,25 +322,25 @@ export default function TemplateModern() {
 
       <section className="mx-auto max-w-5xl px-4 py-10" aria-labelledby="faq">
         <h2 id="faq" className="text-2xl font-bold md:text-3xl text-center mb-8">
-          Pertanyaan Seputar Bengkel
+          Pertanyaan Seputar dapur
         </h2>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-colors">
-            <h3 className="font-bold text-base">Di mana bengkel sepeda terdekat di Ungaran Timur?</h3>
+            <h3 className="font-bold text-base">Di mana Ikan Bakar terdekat di Ungaran Timur?</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Agung Bike Station berlokasi strategis di Jl. Bima Panorama Asri blok C22, Bandungan, Kec. Ungaran Timur. Kami adalah klinik spesialis sepeda yang mudah dijangkau dari pusat kota Semarang maupun area Ungaran sekitarnya.
+              Ikanbakar99 berlokasi strategis di Jl. Bima Panorama Asri blok C22, Ungaran, Kec. Ungaran Timur. Kami adalah klinik spesialis pesanan yang mudah dijangkau dari pusat kota Semarang maupun area Ungaran sekitarnya.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-colors">
-            <h3 className="font-bold text-base">Apakah melayani antar-jemput sepeda?</h3>
+            <h3 className="font-bold text-base">Apakah melayani antar-jemput pesanan?</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Tentu saja! Kami memiliki layanan Pickup & Drop-off (Antar-Jemput) khusus untuk Anda yang sibuk. Gratis biaya antar-jemput untuk radius 5 km dari lokasi bengkel kami.
+              Tentu saja! Kami memiliki layanan Pickup & Drop-off (Antar-Jemput) khusus untuk Anda yang sibuk. Gratis biaya antar-jemput untuk radius 5 km dari lokasi dapur kami.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-colors">
-            <h3 className="font-bold text-base">Bisa rakit sepeda custom atau restorasi?</h3>
+            <h3 className="font-bold text-base">Bisa rakit pesanan custom atau restorasi?</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              Bisa. Mekanik ahli kami berpengalaman dalam merakit sepeda custom (road bike, MTB, seli) dari nol, melakukan upgrade groupset, hingga restorasi total sepeda klasik dengan tingkat presisi tinggi.
+              Bisa. Mekanik ahli kami berpengalaman dalam merakit pesanan custom (road bike, MTB, seli) dari nol, melakukan upgrade groupset, hingga restorasi total pesanan klasik dengan tingkat presisi tinggi.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-colors">
