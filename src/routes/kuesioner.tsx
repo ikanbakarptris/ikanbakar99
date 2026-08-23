@@ -70,7 +70,7 @@ function KuesionerPage() {
 
   const handleShare = () => {
     const text = 'Halo warga! Yuk bantu isi kuesioner menu Ikan Bakar P. Tris untuk Puri Delta: https://ikanbakar99.vercel.app/kuesioner';
-    window.open(https://api.whatsapp.com/send?text= + encodeURIComponent(text), '_blank');
+    window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text), '_blank');
   };
 
   if (isSuccess) {

@@ -1376,11 +1376,11 @@ function SurveyTab() {
     // Create CSV rows
     const rows = responses.map(r => [
       new Date(r.created_at).toLocaleString('id-ID'),
-      " + (r.nama || '').replace(/"/g, '""') + ",
-      " + (r.whatsapp || '').replace(/"/g, '""') + ",
-      " + (r.menu_favorit || '').replace(/"/g, '""') + ",
-      " + (r.tingkat_pedas || '').replace(/"/g, '""') + ",
-      " + (r.saran || '').replace(/"/g, '""') + "
+      '"' + (r.nama || '').replace(/"/g, '""') + '"',
+      '"' + (r.whatsapp || '').replace(/"/g, '""') + '"',
+      '"' + (r.menu_favorit || '').replace(/"/g, '""') + '"',
+      '"' + (r.tingkat_pedas || '').replace(/"/g, '""') + '"',
+      '"' + (r.saran || '').replace(/"/g, '""') + '"'
     ]);
     
     const csvContent = [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
@@ -1389,7 +1389,7 @@ function SurveyTab() {
     
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', kuesioner_ikanbakar99_.csv);
+    link.setAttribute('download', `kuesioner_ikanbakar99_${new Date().toISOString().split('T')[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
