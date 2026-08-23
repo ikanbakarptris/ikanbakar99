@@ -32,7 +32,9 @@ export function BeforeAfterSlider({
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
-    handleMove(e.touches[0].clientX);
+    const touch = e.touches[0];
+    if (!touch) return;
+    handleMove(touch.clientX);
   };
 
   return (
