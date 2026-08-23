@@ -113,6 +113,27 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Restaurant",
+              name: "Ikan Bakar P. Tris",
+              description: "Rumah makan ikan bakar di Perumahan Puri Delta, Sidoarjo. Lele, nila, gurameh, dan ayam bakar.",
+              telephone: "+6282227459399",
+              servesCuisine: "Indonesian, Seafood",
+              priceRange: "",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Perumahan Puri Delta",
+                addressLocality: "Sidoarjo",
+                addressRegion: "Jawa Timur",
+                addressCountry: "ID"
+              }
+            }),
+          }}
+        />
       </head>
       <body>
         {children}
