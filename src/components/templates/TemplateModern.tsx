@@ -274,13 +274,14 @@ export default function TemplateModern() {
               dari {shopReviewsCount} {trustRatingText}
             </p>
             <div className="mt-5 flex flex-col gap-2 border-t border-border/50 pt-4">
-              <a href="https://www.google.com/maps/place/Agung+Bike+Repair/@-7.1358323,110.4452422,17z/data=!4m8!3m7!1s0x2e70895bc756627b:0x556ab0e0f295b68e!8m2!3d-7.1358323!4d110.4452422!9m1!1b1!16s%2Fg%2F11sct34b1h?entry=ttu" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center justify-center gap-1.5">
-                Lihat 130+ Ulasan Asli di Google <span aria-hidden="true" className="text-[10px]">↗</span>
+              <a href={dynamicMapsUrl} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center justify-center gap-1.5">
+                Lihat lokasi & ulasan di Google Maps <span aria-hidden="true" className="text-[10px]">↗</span>
               </a>
-              <a href="https://www.google.com/maps/place/Agung+Bike+Repair/@-7.1358323,110.4452422,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICBpveKtgE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAHRPTWlJlBGfYSONkQzABYcjUQow5F6n9ZUP9BzhJKVXmyjxhDvaL04KqTHB0J0aWurBoPtFdD15KLbQiz7t3fWLHslq2Jel-HYkS2xTeIBIBFr7M2u5r8ImJOMpViGuhNA7OpjcoXAT%3Dw152-h86-k-no!7i4000!8i2250!4m7!3m6!1s0x2e70895bc756627b:0x556ab0e0f295b68e!8m2!3d-7.1358323!4d110.4452422!10e5!16s%2Fg%2F11sct34b1h?entry=ttu" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center justify-center gap-1.5">
-                Lihat Galeri Foto Pelanggan <span aria-hidden="true" className="text-[10px]">↗</span>
+              <a href="/ulasan" className="text-xs font-semibold text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center justify-center gap-1.5">
+                Lihat galeri foto pelanggan <span aria-hidden="true" className="text-[10px]">↗</span>
               </a>
             </div>
+
           </div>
           <div className="rounded-2xl border border-primary/30 bg-primary/10 p-5 hover:shadow-lg hover:bg-primary/15 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
             <div className="absolute -right-4 -top-4 size-24 rounded-full bg-primary/20 blur-2xl pointer-events-none" aria-hidden="true" />
