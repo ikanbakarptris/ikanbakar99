@@ -50,44 +50,31 @@ export default function TemplateModern() {
   const { data: reviews, isPending } = useQuery(reviewsQueryOptions);
   const { data: settings } = useQuery(siteSettingsQueryOptions);
 
-  const shopName = settings?.shop_name || "Ikanbakar99";
-  const shopRating = settings?.shop_rating || 5.0;
-  const shopReviewsCount = settings?.shop_reviews_count || 130;
-  const shopHours = settings?.shop_hours || "Senin-Minggu - 08.00-20.00 WIB";
-  const shopAddress = settings?.shop_address || "Jl. Bima Panorama Asri blok C22, Ungaran";
+  const shopName = settings?.shop_name || "Ikan Bakar P. Tris";
+  const shopRating = settings?.shop_rating || 4.9;
+  const shopReviewsCount = settings?.shop_reviews_count || 87;
+  const shopHours = settings?.shop_hours || "Setiap hari - 10.00-21.00 WIB";
+  const shopAddress = settings?.shop_address || "Perumahan Puri Delta Sidoarjo";
 
-  const headerSubtitle = settings?.header_subtitle || "Ikan Bakar · Ungaran";
-  const servicesTitle = settings?.services_title || "Layanan kami";
-  const servicesSubtitle = settings?.services_subtitle || "Harga transparan, dikonfirmasi dulu sebelum dikerjakan.";
+  const headerSubtitle = settings?.header_subtitle || "Rumah makan ikan bakar · Puri Delta";
+  const servicesTitle = settings?.services_title || "Menu kami";
+  const servicesSubtitle = settings?.services_subtitle || "Harga jujur, porsi mengenyangkan, dibakar setelah pesanan masuk.";
   const trustRatingText = settings?.trust_rating_text || "ulasan pelanggan";
-  const trustPickupTitle = settings?.trust_pickup_title || "Pickup & Drop-off";
-  const trustPickupDesc = settings?.trust_pickup_desc || "pesanan kami jemput di rumah kamu dan diantar kembali setelah selesai. Gratis untuk radius 5 km dari dapur, di luar itu ada biaya ringan.";
-  const addressTitle = settings?.address_title || "Alamat dapur";
+  const trustPickupTitle = settings?.trust_pickup_title || "Antar & Ambil Sendiri";
+  const trustPickupDesc = settings?.trust_pickup_desc || "Gratis ongkir untuk area Perumahan Puri Delta. Di luar itu ada tambahan ongkir ringan. Bisa juga ambil sendiri ke rumah makan.";
+  const addressTitle = settings?.address_title || "Alamat rumah makan";
 
-  const heroBadge = settings?.hero_badge || "Ungaran & sekitarnya";
-  const heroTitle = settings?.hero_title || "Rem blong di turunan bukan soal sial - itu soal servis asal-asalan.";
-  const heroDesc1 = settings?.hero_desc_1 || "Rantai loncat, velg goyang, gigi susah masuk. Dibiarkan seminggu, biaya perbaikan bisa berlipat - dan risikonya kamu bawa ke jalan menurun Ungaran.";
-  const heroDesc2 = settings?.hero_desc_2 || `Di ${shopName}, setiap pesanan diperiksa menyeluruh, dikerjakan dengan alat ukur yang benar, dan kondisinya dilaporkan sebelum dieksekusi. Bisa antar-jemput.`;
+  const heroBadge = settings?.hero_badge || "Puri Delta & sekitarnya";
+  const heroTitle = settings?.hero_title || "Ikan bakar bumbu meresap, dibakar dadakan begitu pesanan masuk.";
+  const heroDesc1 = settings?.hero_desc_1 || "Ikan segar pilihan, dibumbui sejak dini hari, lalu dibakar di atas bara sampai wangi dan tidak amis.";
+  const heroDesc2 = settings?.hero_desc_2 || `Pesan lewat WhatsApp, kami antar hangat ke rumah Anda di area Puri Delta dan sekitarnya. Lengkap dengan sambal terasi atau sambal bawang.`;
   const heroStats = settings?.hero_stats || [
-    { value: "5.0", label: "130 ulasan" },
-    { value: "1 hari", label: "servis ringan" },
-    { value: "Gratis", label: "antar-jemput*" }
+    { value: "Rp 10rb", label: "mulai dari" },
+    { value: "30 menit", label: "siap diantar" },
+    { value: "Gratis", label: "antar area Puri Delta" }
   ];
 
-  const servicesList = settings?.services && settings.services.length > 0 ? settings.services : [
-    {
-      title: "Servis Ringan",
-      desc: "Setel rem, oper gigi, pelumasan rantai, dan cek tekanan ban. pesanan enteng lagi dalam hitungan jam.",
-      price: "Mulai Rp 50.000",
-      icon: "🔧",
-    },
-    {
-      title: "Setel Velg / Jari-jari",
-      desc: "Velg peyang atau jari-jari kendor kami setel presisi pakai truing stand, bukan kira-kira.",
-      price: "Mulai Rp 75.000",
-      icon: "⚙️"
-    }
-  ];
+  const servicesList = settings?.services && settings.services.length > 0 ? settings.services : SERVICES;
 
   const sliderImages = resolveMediaUrls(
     settings?.carousel_images ?? [],
@@ -95,42 +82,37 @@ export default function TemplateModern() {
 
   const dynamicWaUrl = settings?.whatsapp_number ? `https://wa.me/${settings.whatsapp_number.replace(/[^0-9]/g, '')}` : SHOP.whatsapp;
   const dynamicMapsUrl = settings?.maps_url || SHOP.maps;
-  const ctaWaText = settings?.cta_whatsapp_text || "Konsultasi Servis via WhatsApp";
-  const ctaMapsText = settings?.cta_maps_text || "Petunjuk Arah ke dapur";
+  const ctaWaText = settings?.cta_whatsapp_text || "Pesan via WhatsApp";
+  const ctaMapsText = settings?.cta_maps_text || "Petunjuk Arah";
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "AutoRepair",
+    "@type": "Restaurant",
     "name": shopName,
     "image": settings?.hero_image || "",
-    "telephone": "0895382966573",
-    "url": "https://agung-bike-connect.vercel.app",
+    "telephone": "+6282227459399",
+    "servesCuisine": "Indonesian, Seafood",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Jl. Bima Panorama Asri blok C22",
-      "addressLocality": "Ungaran, Kalongan",
-      "addressRegion": "Jawa Tengah",
-      "postalCode": "50519",
+      "streetAddress": shopAddress,
+      "addressLocality": "Sidoarjo",
+      "addressRegion": "Jawa Timur",
       "addressCountry": "ID"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -7.1358323,
-      "longitude": 110.4452422
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "08:00",
-      "closes": "20:00"
+      "opens": "10:00",
+      "closes": "21:00"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "130"
+      "ratingValue": String(shopRating),
+      "reviewCount": String(shopReviewsCount)
     },
-    "priceRange": "$$"
+    "priceRange": "Rp"
   };
+
 
   const finalJsonLd = settings?.advanced_json_ld && settings.advanced_json_ld.trim() !== "" 
     ? settings.advanced_json_ld 
