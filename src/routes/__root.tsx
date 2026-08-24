@@ -78,13 +78,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Ikan Bakar P. Tris — Ikan Bakar Puri Delta Sidoarjo" },
-      { name: "description", content: "Rumah makan ikan bakar di Perumahan Puri Delta, Sidoarjo. Lele, nila, gurameh, dan ayam bakar dengan sambal ulek dadakan." },
+      {
+        name: "description",
+        content:
+          "Rumah makan ikan bakar di Perumahan Puri Delta, Sidoarjo. Lele, nila, gurameh, dan ayam bakar dengan sambal ulek dadakan.",
+      },
       { name: "author", content: "Ikanbakar99" },
       { property: "og:title", content: "Ikanbakar99 - Ikan Bakar" },
-      { property: "og:description", content: "Rumah makan ikan bakar di Perumahan Puri Delta, Sidoarjo. Lele, nila, gurameh, dan ayam bakar dengan sambal ulek dadakan." },
+      {
+        property: "og:description",
+        content:
+          "Rumah makan ikan bakar di Perumahan Puri Delta, Sidoarjo. Lele, nila, gurameh, dan ayam bakar dengan sambal ulek dadakan.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@ikanbakar99" },
     ],
     links: [
       {
@@ -93,14 +101,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "preconnect", href: "https://aaaafvtvofunzelublak.supabase.co", crossOrigin: "anonymous" },
+      {
+        rel: "preconnect",
+        href: "https://aaaafvtvofunzelublak.supabase.co",
+        crossOrigin: "anonymous",
+      },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
-
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -110,30 +121,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         <HeadContent />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Restaurant",
-              name: "Ikan Bakar P. Tris",
-              description: "Rumah makan ikan bakar di Perumahan Puri Delta, Sidoarjo. Lele, nila, gurameh, dan ayam bakar.",
-              telephone: "+6282227459399",
-              servesCuisine: "Indonesian, Seafood",
-              priceRange: "",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Perumahan Puri Delta",
-                addressLocality: "Sidoarjo",
-                addressRegion: "Jawa Timur",
-                addressCountry: "ID"
-              }
-            }),
-          }}
-        />
+        
       </head>
       <body>
         {children}
@@ -148,13 +139,15 @@ import { siteSettingsQueryOptions } from "../lib/site-settings";
 
 function ThemeProvider({ children }: { children: ReactNode }) {
   const { data: settings } = useQuery(siteSettingsQueryOptions);
-  
+
   // Inject dynamic styles if they exist
-  const themeStyles = settings ? {
-    "--primary": settings.theme_color,
-    "--ring": settings.theme_color,
-    "--font-sans": `"${settings.font_family}", ui-sans-serif, system-ui, sans-serif`,
-  } as React.CSSProperties : {};
+  const themeStyles = settings
+    ? ({
+        "--primary": settings.theme_color,
+        "--ring": settings.theme_color,
+        "--font-sans": `"${settings.font_family}", ui-sans-serif, system-ui, sans-serif`,
+      } as React.CSSProperties)
+    : {};
 
   return (
     <div style={themeStyles} className="contents">
@@ -175,3 +168,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+

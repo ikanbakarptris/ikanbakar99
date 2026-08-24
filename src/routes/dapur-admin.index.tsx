@@ -5,7 +5,6 @@ import { PasswordInput } from "@/components/PasswordInput";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { supabase } from "@/integrations/supabase/client";
 
-
 export const Route = createFileRoute("/dapur-admin/")({
   ssr: false,
   head: () => ({
@@ -63,7 +62,6 @@ function AdminLoginPage() {
     setNotice("Tautan atur ulang kata sandi sudah dikirim ke email Anda.");
   }
 
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
@@ -80,11 +78,11 @@ function AdminLoginPage() {
   return (
     <main className="relative flex min-h-screen items-center justify-center px-4 py-10 overflow-hidden">
       <ParticlesBackground />
-      
+
       <div className="relative z-10 w-full max-w-sm rounded-3xl border border-white/20 bg-background/60 p-6 shadow-2xl backdrop-blur-xl sm:p-8 hover:bg-background/70 transition-colors duration-500 group">
         <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10 pointer-events-none"></div>
         <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-100 -z-10"></div>
-        
+
         <header className="mb-6">
           <h1 className="font-display text-2xl font-bold tracking-tight text-foreground bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
             Panel Pengelola
@@ -96,7 +94,10 @@ function AdminLoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <div className="space-y-1.5 group/input">
-            <label htmlFor="email" className="block text-sm font-medium text-foreground transition-colors group-focus-within/input:text-primary">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-foreground transition-colors group-focus-within/input:text-primary"
+            >
               Email
             </label>
             <input
@@ -111,21 +112,28 @@ function AdminLoginPage() {
           </div>
 
           <div className="space-y-1.5 group/input">
-            <label htmlFor="password" className="block text-sm font-medium text-foreground transition-colors group-focus-within/input:text-primary">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-foreground transition-colors group-focus-within/input:text-primary"
+            >
               Kata sandi
             </label>
             <PasswordInput id="password" value={password} onChange={setPassword} required />
           </div>
 
-
           {error ? (
-            <p role="alert" className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive border border-destructive/20 animate-in slide-in-from-top-1 fade-in duration-300">
+            <p
+              role="alert"
+              className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive border border-destructive/20 animate-in slide-in-from-top-1 fade-in duration-300"
+            >
               {error}
             </p>
           ) : null}
 
           {notice ? (
-            <p className="rounded-xl bg-primary/10 px-4 py-3 text-sm text-foreground border border-primary/20 animate-in slide-in-from-top-1 fade-in duration-300">{notice}</p>
+            <p className="rounded-xl bg-primary/10 px-4 py-3 text-sm text-foreground border border-primary/20 animate-in slide-in-from-top-1 fade-in duration-300">
+              {notice}
+            </p>
           ) : null}
 
           <button

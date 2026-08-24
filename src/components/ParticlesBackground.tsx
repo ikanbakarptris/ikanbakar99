@@ -51,7 +51,7 @@ export function ParticlesBackground() {
 
     const drawParticles = () => {
       ctx.clearRect(0, 0, width, height);
-      
+
       particles.current.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -62,7 +62,7 @@ export function ParticlesBackground() {
         const dx = mouse.current.x - p.x;
         const dy = mouse.current.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (dist < 150) {
           const force = (150 - dist) / 150;
           p.x -= dx * force * 0.03;
@@ -103,7 +103,7 @@ export function ParticlesBackground() {
     };
 
     window.addEventListener("resize", resize);
-    
+
     const handleMouseMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
@@ -112,7 +112,7 @@ export function ParticlesBackground() {
       mouse.current.x = -1000;
       mouse.current.y = -1000;
     };
-    
+
     window.addEventListener("mousemove", handleMouseMove);
     document.body.addEventListener("mouseleave", handleMouseLeave);
 
@@ -146,7 +146,10 @@ export function ParticlesBackground() {
     <div className="fixed inset-0 pointer-events-none z-[-1] bg-gradient-to-br from-background via-background/95 to-muted/50 overflow-hidden">
       <div className="absolute -top-1/4 -right-1/4 w-[80vh] h-[80vh] rounded-full bg-primary/5 blur-3xl opacity-50 pointer-events-none"></div>
       <div className="absolute -bottom-1/4 -left-1/4 w-[60vh] h-[60vh] rounded-full bg-primary/10 blur-3xl opacity-50 pointer-events-none"></div>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-60 mix-blend-plus-lighter" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full opacity-60 mix-blend-plus-lighter"
+      />
     </div>
   );
 }

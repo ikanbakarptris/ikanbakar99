@@ -38,14 +38,16 @@ function StarRating({ stars }: { stars: number }) {
 /** "Google Local Guide" badge — shown only when the reviewer qualifies. */
 function getRelativeTime(dateString?: string) {
   if (!dateString) return null;
-  const rtf = new Intl.RelativeTimeFormat('id', { numeric: 'auto' });
-  const daysDifference = Math.round((new Date(dateString).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
-  
+  const rtf = new Intl.RelativeTimeFormat("id", { numeric: "auto" });
+  const daysDifference = Math.round(
+    (new Date(dateString).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24),
+  );
+
   if (daysDifference > -1) return "Hari ini";
-  if (daysDifference > -7) return rtf.format(daysDifference, 'day');
-  if (daysDifference > -30) return rtf.format(Math.round(daysDifference / 7), 'week');
-  if (daysDifference > -365) return rtf.format(Math.round(daysDifference / 30), 'month');
-  return rtf.format(Math.round(daysDifference / 365), 'year');
+  if (daysDifference > -7) return rtf.format(daysDifference, "day");
+  if (daysDifference > -30) return rtf.format(Math.round(daysDifference / 7), "week");
+  if (daysDifference > -365) return rtf.format(Math.round(daysDifference / 30), "month");
+  return rtf.format(Math.round(daysDifference / 365), "year");
 }
 
 function LocalGuideBadge() {
@@ -78,23 +80,23 @@ function ReviewCard({ review }: { review: CustomerReview }) {
 
   const handleHelpful = () => {
     if (hasVoted) return;
-    setHelpfulCount(c => c + 1);
+    setHelpfulCount((c) => c + 1);
     setHasVoted(true);
   };
 
   const handleShare = async () => {
     const text = `Lihat ulasan dari ${review.name} untuk Ikanbakar99: "${review.text}"`;
     const url = window.location.origin + "/ulasan";
-    
+
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Ulasan Ikanbakar99',
+          title: "Ulasan Ikanbakar99",
           text: text,
-          url: url
+          url: url,
         });
       } catch (err) {
-        console.log('Error sharing', err);
+        console.log("Error sharing", err);
       }
     } else {
       navigator.clipboard.writeText(`${text} ${url}`);
@@ -108,7 +110,11 @@ function ReviewCard({ review }: { review: CustomerReview }) {
         <StarRating stars={review.stars} />
         <div className="flex items-center gap-2">
           {review.isLocalGuide ? <LocalGuideBadge /> : null}
-          {review.date ? <span className="text-[11px] font-medium text-muted-foreground"><span suppressHydrationWarning>{getRelativeTime(review.date)}</span></span> : null}
+          {review.date ? (
+            <span className="text-[11px] font-medium text-muted-foreground">
+              <span suppressHydrationWarning>{getRelativeTime(review.date)}</span>
+            </span>
+          ) : null}
         </div>
       </div>
 
@@ -116,52 +122,73 @@ function ReviewCard({ review }: { review: CustomerReview }) {
         “{review.text}”
       </blockquote>
 
-
       {review.mediaUrl ? (
         <div className="mt-3 overflow-hidden rounded-xl border border-border/50 bg-muted/20 flex-shrink-0">
-          {(review.mediaUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) || review.mediaUrl.includes('.mp4') || review.mediaUrl.includes('.webm') || review.mediaUrl.includes('.mov')) ? (
-            <video 
-              src={review.mediaUrl} 
-              controls 
-              className="w-full max-h-[300px] object-contain bg-black" 
+          {review.mediaUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) ||
+          review.mediaUrl.includes(".mp4") ||
+          review.mediaUrl.includes(".webm") ||
+          review.mediaUrl.includes(".mov") ? (
+            <video
+              src={review.mediaUrl}
+              controls
+              className="w-full max-h-[300px] object-contain bg-black"
               preload="metadata"
             />
           ) : (
-            <a href={review.reviewerUrl || review.mediaUrl} target="_blank" rel="noopener noreferrer" className="block w-full h-full" aria-label="Lihat foto ulasan asli">
-              <img src={review.mediaUrl} alt="Foto dari pelanggan" className="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
+            <a
+              href={review.reviewerUrl || review.mediaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-full"
+              aria-label="Lihat foto ulasan asli"
+            >
+              <img
+                src={review.mediaUrl}
+                alt="Foto dari pelanggan"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+              />
             </a>
           )}
         </div>
       ) : null}
       <footer className="mt-3 flex min-w-0 items-center gap-3 border-t border-border/60 pt-3">
         <div
-            className="relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-primary/10 to-primary/30 font-display text-sm font-bold text-primary shadow-inner"
-            aria-hidden="true"
+          className="relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-primary/10 to-primary/30 font-display text-sm font-bold text-primary shadow-inner"
+          aria-hidden="true"
+        >
+          {review.avatarUrl ? (
+            <img
+              src={review.avatarUrl}
+              alt={review.name}
+              className="h-full w-full object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                if (e.currentTarget.nextElementSibling) {
+                  (e.currentTarget.nextElementSibling as HTMLElement).style.display = "grid";
+                }
+              }}
+            />
+          ) : null}
+          <div
+            className="grid h-full w-full place-items-center"
+            style={{ display: review.avatarUrl ? "none" : "grid" }}
           >
-            {review.avatarUrl ? (
-              <img 
-                src={review.avatarUrl} 
-                alt={review.name} 
-                className="h-full w-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  if (e.currentTarget.nextElementSibling) {
-                    (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'grid';
-                  }
-                }}
-              />
-            ) : null}
-            <div 
-              className="grid h-full w-full place-items-center"
-              style={{ display: review.avatarUrl ? 'none' : 'grid' }}
-            >
-              {review.name.charAt(0).toUpperCase()}
-            </div>
+            {review.name.charAt(0).toUpperCase()}
           </div>
+        </div>
         <div className="min-w-0">
           {review.reviewerUrl ? (
-            <a href={review.reviewerUrl} target="_blank" rel="noopener noreferrer" className="truncate text-sm font-semibold text-foreground hover:text-primary hover:underline transition-colors flex items-center gap-1">
-              {review.name} <span aria-hidden="true" className="text-[10px] opacity-70">↗</span>
+            <a
+              href={review.reviewerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="truncate text-sm font-semibold text-foreground hover:text-primary hover:underline transition-colors flex items-center gap-1"
+            >
+              {review.name}{" "}
+              <span aria-hidden="true" className="text-[10px] opacity-70">
+                ↗
+              </span>
             </a>
           ) : (
             <p className="truncate text-sm font-semibold text-foreground">{review.name}</p>
@@ -238,11 +265,16 @@ export function CustomerReviews({
   const [starFilter, setStarFilter] = useState<number | null>(null);
 
   if (!isLoading && reviews.length === 0 && !media) return null;
-  
-  let filteredReviews = reviews.filter(r => {
+
+  let filteredReviews = reviews.filter((r) => {
     if (filterMediaOnly && !r.mediaUrl) return false;
     if (starFilter && r.stars !== starFilter) return false;
-    if (searchTerm && !r.text.toLowerCase().includes(searchTerm.toLowerCase()) && !r.name.toLowerCase().includes(searchTerm.toLowerCase())) return false;
+    if (
+      searchTerm &&
+      !r.text.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      !r.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+      return false;
     return true;
   });
   if (limit && limit > 0) {
@@ -250,10 +282,7 @@ export function CustomerReviews({
   }
 
   return (
-    <section
-      aria-labelledby="reviews-heading"
-      className="mx-auto max-w-5xl px-4 py-10"
-    >
+    <section aria-labelledby="reviews-heading" className="mx-auto max-w-5xl px-4 py-10">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h2 id="reviews-heading" className="text-2xl font-bold md:text-3xl">
@@ -261,14 +290,14 @@ export function CustomerReviews({
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">{description}</p>
         </div>
-        
+
         {/* Filter Toggle */}
         <div className="flex items-center gap-2">
           <label className="text-sm font-medium text-foreground cursor-pointer flex items-center gap-2 select-none bg-card border border-border px-3 py-1.5 rounded-full hover:bg-muted/50 transition-colors">
             <div className="relative inline-flex items-center cursor-pointer">
-              <input 
-                type="checkbox" 
-                className="sr-only peer" 
+              <input
+                type="checkbox"
+                className="sr-only peer"
                 checked={filterMediaOnly}
                 onChange={(e) => setFilterMediaOnly(e.target.checked)}
               />
@@ -315,4 +344,3 @@ export function CustomerReviews({
     </section>
   );
 }
-

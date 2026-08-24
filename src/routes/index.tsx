@@ -35,10 +35,10 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const { data: settings } = useSuspenseQuery(siteSettingsQueryOptions);
-  
+
   // Future fallback logic can be added here
   // const activeTemplate = settings?.active_template || 'modern';
   // if (activeTemplate === 'classic') return <TemplateClassic />;
-  
+
   return <TemplateModern />;
 }

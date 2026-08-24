@@ -1,13 +1,13 @@
-import React, { useState, useCallback } from 'react';
-import Cropper from 'react-easy-crop';
+import React, { useState, useCallback } from "react";
+import Cropper from "react-easy-crop";
 
 // Utility to create image from url
 const createImage = (url: string) =>
   new Promise<HTMLImageElement>((resolve, reject) => {
     const image = new Image();
-    image.addEventListener('load', () => resolve(image));
-    image.addEventListener('error', (error) => reject(error));
-    image.setAttribute('crossOrigin', 'anonymous');
+    image.addEventListener("load", () => resolve(image));
+    image.addEventListener("error", (error) => reject(error));
+    image.setAttribute("crossOrigin", "anonymous");
     image.src = url;
   });
 
@@ -15,11 +15,11 @@ const createImage = (url: string) =>
 async function getCroppedImg(
   imageSrc: string,
   pixelCrop: { x: number; y: number; width: number; height: number },
-  flip = { horizontal: false, vertical: false }
+  flip = { horizontal: false, vertical: false },
 ): Promise<Blob | null> {
   const image = await createImage(imageSrc);
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
 
   if (!ctx) return null;
 
@@ -41,15 +41,19 @@ async function getCroppedImg(
   ctx.putImageData(data, 0, 0);
 
   return new Promise((resolve, reject) => {
-    canvas.toBlob((file) => {
+    canvas.toBlob(
+      (file) => {
         if (file) {
           const webpBlob = file as any;
-          webpBlob.name = 'cropped_image.webp';
+          webpBlob.name = "cropped_image.webp";
           resolve(webpBlob);
         } else {
           resolve(null);
         }
-      }, 'image/webp', 0.8);
+      },
+      "image/webp",
+      0.8,
+    );
   });
 }
 
@@ -60,7 +64,12 @@ interface ImageCropperModalProps {
   aspectRatio?: number;
 }
 
-export function ImageCropperModal({ imageSrc, onCropComplete, onCancel, aspectRatio = 4 / 3 }: ImageCropperModalProps) {
+export function ImageCropperModal({
+  imageSrc,
+  onCropComplete,
+  onCancel,
+  aspectRatio = 4 / 3,
+}: ImageCropperModalProps) {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
@@ -83,7 +92,7 @@ export function ImageCropperModal({ imageSrc, onCropComplete, onCancel, aspectRa
       }
     } catch (e) {
       console.error(e);
-      alert('Gagal memproses gambar');
+      alert("Gagal memproses gambar");
     } finally {
       setIsProcessing(false);
     }
@@ -102,13 +111,17 @@ export function ImageCropperModal({ imageSrc, onCropComplete, onCancel, aspectRa
           onZoomChange={onZoomChange}
         />
       </div>
-      
+
       <div className="w-full max-w-4xl mx-auto mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-card border border-border p-4 rounded-xl shadow-lg">
         <div className="flex-1 w-full text-sm text-muted-foreground flex items-center gap-2">
           <span className="text-xl">👆</span>
-          <span><strong>Drag/Geser</strong> gambar untuk memposisikan.<br/><strong>Scroll/Pinch</strong> untuk zoom in/out.</span>
+          <span>
+            <strong>Drag/Geser</strong> gambar untuk memposisikan.
+            <br />
+            <strong>Scroll/Pinch</strong> untuk zoom in/out.
+          </span>
         </div>
-        
+
         <div className="flex w-full sm:w-auto items-center gap-3">
           <button
             onClick={onCancel}

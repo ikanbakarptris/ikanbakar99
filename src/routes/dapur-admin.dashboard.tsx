@@ -91,10 +91,7 @@ function Panel({
   );
 }
 
-function PrimaryButton({
-  children,
-  ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+function PrimaryButton({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       {...props}
@@ -107,7 +104,8 @@ function PrimaryButton({
 
 /* -------------------------------- Dashboard -------------------------------- */
 
-type TabId = "settings" | "hero" | "services" | "theme" | "media" | "reviews" | "ui" | "survey" | "advanced";
+type TabId =
+  "settings" | "hero" | "services" | "theme" | "media" | "reviews" | "ui" | "survey" | "advanced";
 
 const TABS = [
   { id: "settings", label: "Info dapur" },
@@ -283,11 +281,17 @@ function GlobalSettingsPanel() {
               type="number"
               className={inputClass}
               value={form.shop_reviews_count}
-              onChange={(e) => setForm({ ...form, shop_reviews_count: parseInt(e.target.value) || 0 })}
+              onChange={(e) =>
+                setForm({ ...form, shop_reviews_count: parseInt(e.target.value) || 0 })
+              }
             />
           </Field>
         </div>
-        <Field label="Nomor WhatsApp" htmlFor="wa" hint="Format internasional tanpa +, contoh 62895382966573.">
+        <Field
+          label="Nomor WhatsApp"
+          htmlFor="wa"
+          hint="Format internasional tanpa +, contoh 62895382966573."
+        >
           <input
             id="wa"
             className={inputClass}
@@ -304,48 +308,48 @@ function GlobalSettingsPanel() {
             onChange={(e) => setForm({ ...form, maps_url: e.target.value })}
           />
         </Field>
-          <div className="pt-4 border-t border-border mt-4">
-            <h4 className="text-sm font-semibold mb-4">Sosial Media & Kontak</h4>
-            <div className="space-y-4">
-              <Field label="Facebook URL" htmlFor="facebook">
-                <input
-                  id="facebook"
-                  className={inputClass}
-                  value={form.social_facebook || ""}
-                  onChange={(e) => setForm({ ...form, social_facebook: e.target.value })}
-                  placeholder="https://facebook.com/..."
-                />
-              </Field>
-              <Field label="Instagram URL" htmlFor="instagram">
-                <input
-                  id="instagram"
-                  className={inputClass}
-                  value={form.social_instagram || ""}
-                  onChange={(e) => setForm({ ...form, social_instagram: e.target.value })}
-                  placeholder="https://instagram.com/..."
-                />
-              </Field>
-              <Field label="Tiktok URL" htmlFor="tiktok">
-                <input
-                  id="tiktok"
-                  className={inputClass}
-                  value={form.social_tiktok || ""}
-                  onChange={(e) => setForm({ ...form, social_tiktok: e.target.value })}
-                  placeholder="https://tiktok.com/..."
-                />
-              </Field>
-              <Field label="Alamat Email" htmlFor="email">
-                <input
-                  id="email"
-                  type="email"
-                  className={inputClass}
-                  value={form.contact_email || ""}
-                  onChange={(e) => setForm({ ...form, contact_email: e.target.value })}
-                  placeholder="contoh@gmail.com"
-                />
-              </Field>
-            </div>
+        <div className="pt-4 border-t border-border mt-4">
+          <h4 className="text-sm font-semibold mb-4">Sosial Media & Kontak</h4>
+          <div className="space-y-4">
+            <Field label="Facebook URL" htmlFor="facebook">
+              <input
+                id="facebook"
+                className={inputClass}
+                value={form.social_facebook || ""}
+                onChange={(e) => setForm({ ...form, social_facebook: e.target.value })}
+                placeholder="https://facebook.com/..."
+              />
+            </Field>
+            <Field label="Instagram URL" htmlFor="instagram">
+              <input
+                id="instagram"
+                className={inputClass}
+                value={form.social_instagram || ""}
+                onChange={(e) => setForm({ ...form, social_instagram: e.target.value })}
+                placeholder="https://instagram.com/..."
+              />
+            </Field>
+            <Field label="Tiktok URL" htmlFor="tiktok">
+              <input
+                id="tiktok"
+                className={inputClass}
+                value={form.social_tiktok || ""}
+                onChange={(e) => setForm({ ...form, social_tiktok: e.target.value })}
+                placeholder="https://tiktok.com/..."
+              />
+            </Field>
+            <Field label="Alamat Email" htmlFor="email">
+              <input
+                id="email"
+                type="email"
+                className={inputClass}
+                value={form.contact_email || ""}
+                onChange={(e) => setForm({ ...form, contact_email: e.target.value })}
+                placeholder="contoh@gmail.com"
+              />
+            </Field>
           </div>
+        </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <PrimaryButton type="submit" disabled={isPending || mutation.isPending}>
             {mutation.isPending ? "Menyimpan…" : "Simpan perubahan"}
@@ -372,7 +376,11 @@ function HeroPanel() {
           mutation.mutate(form);
         }}
       >
-                <Field label="Gambar Hero (Rekomendasi: 1200x800px, max 2MB)" htmlFor="hero_image" hint="Bisa unggah langsung, atau paste URL gambar.">
+        <Field
+          label="Gambar Hero (Rekomendasi: 1200x800px, max 2MB)"
+          htmlFor="hero_image"
+          hint="Bisa unggah langsung, atau paste URL gambar."
+        >
           <div className="flex flex-col sm:flex-row gap-3">
             <input
               id="hero_image"
@@ -381,7 +389,7 @@ function HeroPanel() {
               onChange={(e) => setForm({ ...form, hero_image: e.target.value })}
               placeholder="Kosongkan untuk pakai gambar bawaan"
             />
-            <FileUploadButton 
+            <FileUploadButton
               onUploadSuccess={(url) => setForm({ ...form, hero_image: url })}
               label="Unggah"
               className="shrink-0"
@@ -439,7 +447,10 @@ function ServicesPanel() {
   const services = form.services ?? [];
 
   const addService = () => {
-    setForm({ ...form, services: [...services, { title: "Layanan Baru", desc: "", price: "", icon: "🔧" }] });
+    setForm({
+      ...form,
+      services: [...services, { title: "Layanan Baru", desc: "", price: "", icon: "🔧" }],
+    });
   };
 
   const updateService = (index: number, field: string, value: string) => {
@@ -470,25 +481,29 @@ function ServicesPanel() {
               </button>
             </div>
             <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
-               <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Ikon</label>
-                  <input
-                    className={`${inputClass} w-16 text-center text-xl`}
-                    value={s.icon}
-                    onChange={(e) => updateService(i, "icon", e.target.value)}
-                  />
-               </div>
-               <div>
-                 <label className="block text-xs font-medium text-muted-foreground mb-1">Nama Layanan</label>
-                  <input
-                    className={inputClass}
-                    value={s.title}
-                    onChange={(e) => updateService(i, "title", e.target.value)}
-                  />
-               </div>
+              <div>
+                <label className="block text-xs font-medium text-muted-foreground mb-1">Ikon</label>
+                <input
+                  className={`${inputClass} w-16 text-center text-xl`}
+                  value={s.icon}
+                  onChange={(e) => updateService(i, "icon", e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  Nama Layanan
+                </label>
+                <input
+                  className={inputClass}
+                  value={s.title}
+                  onChange={(e) => updateService(i, "title", e.target.value)}
+                />
+              </div>
             </div>
             <div>
-              <label className="block text-xs font-medium text-muted-foreground mb-1">Deskripsi</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">
+                Deskripsi
+              </label>
               <textarea
                 className={inputClass}
                 rows={2}
@@ -509,15 +524,19 @@ function ServicesPanel() {
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-border pt-4">
           <button
-             type="button"
-             onClick={addService}
-             className="px-4 py-2 bg-muted text-foreground text-sm font-semibold rounded-lg hover:bg-muted/80"
+            type="button"
+            onClick={addService}
+            className="px-4 py-2 bg-muted text-foreground text-sm font-semibold rounded-lg hover:bg-muted/80"
           >
             + Tambah Layanan
           </button>
-          
+
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-            <PrimaryButton type="button" onClick={() => mutation.mutate(form)} disabled={isPending || mutation.isPending}>
+            <PrimaryButton
+              type="button"
+              onClick={() => mutation.mutate(form)}
+              disabled={isPending || mutation.isPending}
+            >
               {mutation.isPending ? "Menyimpan..." : "Simpan Layanan"}
             </PrimaryButton>
             <StatusLine status={status} />
@@ -537,7 +556,6 @@ const THEME_TEMPLATES = [
   { name: "Ocean Blue", color: "#2563EB", font: "Poppins" },
   { name: "Dark Knight", color: "#374151", font: "Rubik" },
 ];
-
 
 function UiLabelsPanel() {
   const { form, setForm, isPending, mutation, status } = useSettingsForm();
@@ -562,25 +580,25 @@ function UiLabelsPanel() {
             onChange={(e) => setForm({ ...form, header_subtitle: e.target.value })}
           />
         </Field>
-        
+
         <div className="grid gap-4 md:grid-cols-2">
-            <Field label="Teks Tombol WhatsApp" htmlFor="cta_whatsapp_text">
+          <Field label="Teks Tombol WhatsApp" htmlFor="cta_whatsapp_text">
             <input
-                id="cta_whatsapp_text"
-                className={inputClass}
-                value={form.cta_whatsapp_text}
-                onChange={(e) => setForm({ ...form, cta_whatsapp_text: e.target.value })}
+              id="cta_whatsapp_text"
+              className={inputClass}
+              value={form.cta_whatsapp_text}
+              onChange={(e) => setForm({ ...form, cta_whatsapp_text: e.target.value })}
             />
-            </Field>
-            
-            <Field label="Teks Tombol Maps" htmlFor="cta_maps_text">
+          </Field>
+
+          <Field label="Teks Tombol Maps" htmlFor="cta_maps_text">
             <input
-                id="cta_maps_text"
-                className={inputClass}
-                value={form.cta_maps_text}
-                onChange={(e) => setForm({ ...form, cta_maps_text: e.target.value })}
+              id="cta_maps_text"
+              className={inputClass}
+              value={form.cta_maps_text}
+              onChange={(e) => setForm({ ...form, cta_maps_text: e.target.value })}
             />
-            </Field>
+          </Field>
         </div>
 
         <Field label="Judul Bagian Layanan" htmlFor="services_title">
@@ -591,7 +609,7 @@ function UiLabelsPanel() {
             onChange={(e) => setForm({ ...form, services_title: e.target.value })}
           />
         </Field>
-        
+
         <Field label="Deskripsi Bagian Layanan" htmlFor="services_subtitle">
           <textarea
             id="services_subtitle"
@@ -601,24 +619,24 @@ function UiLabelsPanel() {
             onChange={(e) => setForm({ ...form, services_subtitle: e.target.value })}
           />
         </Field>
-        
+
         <div className="grid gap-4 md:grid-cols-2">
-            <Field label="Teks Pelanggan (Rating)" htmlFor="trust_rating_text">
+          <Field label="Teks Pelanggan (Rating)" htmlFor="trust_rating_text">
             <input
-                id="trust_rating_text"
-                className={inputClass}
-                value={form.trust_rating_text}
-                onChange={(e) => setForm({ ...form, trust_rating_text: e.target.value })}
+              id="trust_rating_text"
+              className={inputClass}
+              value={form.trust_rating_text}
+              onChange={(e) => setForm({ ...form, trust_rating_text: e.target.value })}
             />
-            </Field>
-            <Field label="Judul Alamat Footer" htmlFor="address_title">
+          </Field>
+          <Field label="Judul Alamat Footer" htmlFor="address_title">
             <input
-                id="address_title"
-                className={inputClass}
-                value={form.address_title}
-                onChange={(e) => setForm({ ...form, address_title: e.target.value })}
+              id="address_title"
+              className={inputClass}
+              value={form.address_title}
+              onChange={(e) => setForm({ ...form, address_title: e.target.value })}
             />
-            </Field>
+          </Field>
         </div>
 
         <Field label="Judul Pickup & Drop-off" htmlFor="trust_pickup_title">
@@ -629,7 +647,7 @@ function UiLabelsPanel() {
             onChange={(e) => setForm({ ...form, trust_pickup_title: e.target.value })}
           />
         </Field>
-        
+
         <Field label="Deskripsi Pickup & Drop-off" htmlFor="trust_pickup_desc">
           <textarea
             id="trust_pickup_desc"
@@ -654,7 +672,7 @@ function UiLabelsPanel() {
 function ThemePanel() {
   const { form, setForm, isPending, mutation, status } = useSettingsForm();
 
-  const applyTemplate = (template: typeof THEME_TEMPLATES[0]) => {
+  const applyTemplate = (template: (typeof THEME_TEMPLATES)[0]) => {
     const nextForm = { ...form, theme_color: template.color, font_family: template.font };
     setForm(nextForm);
     mutation.mutate(nextForm);
@@ -662,41 +680,47 @@ function ThemePanel() {
 
   return (
     <Panel title="Tema" description="Ubah kostum dan tata letak halaman depan.">
-        <div className="mb-6 space-y-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
-          <h4 className="text-sm font-semibold text-primary">Pilih Template Website (Kostum Utama)</h4>
-          <p className="text-xs text-muted-foreground mb-3">Ubah total tata letak dan desain website dalam 1 klik tanpa menghilangkan data Anda.</p>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <button
-              type="button"
-              onClick={() => {
-                const nextForm = { ...form, active_template: "modern" };
-                setForm(nextForm);
-                mutation.mutate(nextForm);
-              }}
-              className={`flex flex-col items-start gap-1 rounded-xl border p-4 text-left transition-colors hover:border-primary/50 ${form.active_template === 'modern' || !form.active_template ? 'border-primary bg-primary/10 ring-1 ring-primary' : 'border-border bg-card hover:bg-muted/50'}`}
-            >
-              <span className="font-semibold">Modern (Bawaan)</span>
-              <span className="text-xs text-muted-foreground">Tata letak standar dengan hero banner besar.</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                // Future templates can go here. For now it just falls back.
-                const nextForm = { ...form, active_template: "classic" };
-                setForm(nextForm);
-                mutation.mutate(nextForm);
-              }}
-              className={`flex flex-col items-start gap-1 rounded-xl border p-4 text-left transition-colors hover:border-primary/50 opacity-60 cursor-not-allowed`}
-              disabled
-            >
-              <span className="font-semibold flex items-center gap-2">Klasik (Segera Datang)</span>
-              <span className="text-xs text-muted-foreground">Desain elegan dan minimalis.</span>
-            </button>
-          </div>
+      <div className="mb-6 space-y-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
+        <h4 className="text-sm font-semibold text-primary">
+          Pilih Template Website (Kostum Utama)
+        </h4>
+        <p className="text-xs text-muted-foreground mb-3">
+          Ubah total tata letak dan desain website dalam 1 klik tanpa menghilangkan data Anda.
+        </p>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <button
+            type="button"
+            onClick={() => {
+              const nextForm = { ...form, active_template: "modern" };
+              setForm(nextForm);
+              mutation.mutate(nextForm);
+            }}
+            className={`flex flex-col items-start gap-1 rounded-xl border p-4 text-left transition-colors hover:border-primary/50 ${form.active_template === "modern" || !form.active_template ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border bg-card hover:bg-muted/50"}`}
+          >
+            <span className="font-semibold">Modern (Bawaan)</span>
+            <span className="text-xs text-muted-foreground">
+              Tata letak standar dengan hero banner besar.
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              // Future templates can go here. For now it just falls back.
+              const nextForm = { ...form, active_template: "classic" };
+              setForm(nextForm);
+              mutation.mutate(nextForm);
+            }}
+            className={`flex flex-col items-start gap-1 rounded-xl border p-4 text-left transition-colors hover:border-primary/50 opacity-60 cursor-not-allowed`}
+            disabled
+          >
+            <span className="font-semibold flex items-center gap-2">Klasik (Segera Datang)</span>
+            <span className="text-xs text-muted-foreground">Desain elegan dan minimalis.</span>
+          </button>
         </div>
+      </div>
 
-        <div className="mb-6 space-y-3">
-          <h4 className="text-sm font-semibold">Pilih Palet Warna & Font</h4>
+      <div className="mb-6 space-y-3">
+        <h4 className="text-sm font-semibold">Pilih Palet Warna & Font</h4>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {THEME_TEMPLATES.map((t) => (
             <button
@@ -779,17 +803,17 @@ function MediaPanel() {
   function removeMedia(urlToRemove: string) {
     const newMediaList = mediaList.filter((url) => url !== urlToRemove);
     setForm({ ...form, carousel_images: newMediaList });
-    
+
     // Attempt to delete from Supabase storage if it's a supabase URL
-    if (urlToRemove.includes('supabase.co/storage/v1/object/public/media/')) {
-       const path = urlToRemove.split('/public/media/')[1];
-       if (path) supabase.storage.from('media').remove([path]);
+    if (urlToRemove.includes("supabase.co/storage/v1/object/public/media/")) {
+      const path = urlToRemove.split("/public/media/")[1];
+      if (path) supabase.storage.from("media").remove([path]);
     }
   }
 
-  function moveMedia(index: number, direction: 'up' | 'down') {
+  function moveMedia(index: number, direction: "up" | "down") {
     const newList = [...mediaList];
-    const target = direction === 'up' ? index - 1 : index + 1;
+    const target = direction === "up" ? index - 1 : index + 1;
     if (target < 0 || target >= newList.length) return;
     const a = newList[index];
     const b = newList[target];
@@ -800,7 +824,11 @@ function MediaPanel() {
   }
 
   function renderMediaItem(url: string, index: number) {
-    const isVideo = (url.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) || url.includes('.mp4') || url.includes('.webm') || url.includes('.mov'));
+    const isVideo =
+      url.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) ||
+      url.includes(".mp4") ||
+      url.includes(".webm") ||
+      url.includes(".mov");
     return (
       <div
         key={index}
@@ -809,7 +837,7 @@ function MediaPanel() {
         <div className="flex flex-col gap-1 shrink-0 px-1">
           <button
             type="button"
-            onClick={() => moveMedia(index, 'up')}
+            onClick={() => moveMedia(index, "up")}
             disabled={index === 0}
             className="rounded bg-muted px-1 py-0.5 text-xs font-bold text-muted-foreground hover:bg-muted/80 disabled:opacity-30 disabled:cursor-not-allowed"
             title="Pindah ke Atas/Kiri"
@@ -818,7 +846,7 @@ function MediaPanel() {
           </button>
           <button
             type="button"
-            onClick={() => moveMedia(index, 'down')}
+            onClick={() => moveMedia(index, "down")}
             disabled={index === mediaList.length - 1}
             className="rounded bg-muted px-1 py-0.5 text-xs font-bold text-muted-foreground hover:bg-muted/80 disabled:opacity-30 disabled:cursor-not-allowed"
             title="Pindah ke Bawah/Kanan"
@@ -855,8 +883,14 @@ function MediaPanel() {
     >
       <div className="space-y-6">
         <div className="rounded-xl border border-border bg-muted/20 p-5 text-center">
-          <FileUploadButton onUploadSuccess={handleUploadSuccess} label="Upload Foto / Video Baru" className="rounded-full shadow-lift" />
-          <p className="mt-2 text-xs text-muted-foreground">Mendukung JPG, PNG, MP4. (Auto-upload & simpan)</p>
+          <FileUploadButton
+            onUploadSuccess={handleUploadSuccess}
+            label="Upload Foto / Video Baru"
+            className="rounded-full shadow-lift"
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            Mendukung JPG, PNG, MP4. (Auto-upload & simpan)
+          </p>
         </div>
 
         <div>
@@ -871,8 +905,8 @@ function MediaPanel() {
         </div>
 
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <PrimaryButton 
-            type="button" 
+          <PrimaryButton
+            type="button"
             onClick={() => mutation.mutate(form)}
             disabled={isPending || mutation.isPending}
           >
@@ -909,7 +943,6 @@ function ReviewsPanel() {
     onError: (e: Error) => setStatus(`Gagal menyimpan: ${e.message}`),
   });
 
-
   const remove = useMutation({
     mutationFn: (id: string) => deleteReview(id),
     onSuccess: () => {
@@ -920,7 +953,7 @@ function ReviewsPanel() {
   });
 
   const reorder = useMutation({
-    mutationFn: async (updates: { id: string, sort_order: number }[]) => {
+    mutationFn: async (updates: { id: string; sort_order: number }[]) => {
       // Lakukan update secara berurutan agar tidak membebani Supabase API
       for (const update of updates) {
         await updateReviewSortOrder(update.id, update.sort_order);
@@ -929,9 +962,9 @@ function ReviewsPanel() {
     onSuccess: () => invalidate(),
   });
 
-  function moveReview(index: number, direction: 'up' | 'down') {
+  function moveReview(index: number, direction: "up" | "down") {
     if (!reviews) return;
-    const targetIdx = direction === 'up' ? index - 1 : index + 1;
+    const targetIdx = direction === "up" ? index - 1 : index + 1;
     if (targetIdx < 0 || targetIdx >= reviews.length) return;
 
     // Buat salinan array dan tukar posisi dua elemen
@@ -945,11 +978,10 @@ function ReviewsPanel() {
     // Tetapkan sort_order baru berdasarkan urutan index saat ini untuk semua item
     // Ini menyelesaikan masalah jika semua sort_order sebelumnya sama (misal 0 semua)
     const updates = newReviews.map((r, i) => ({ id: r.id, sort_order: i }));
-    
+
     // Terapkan ke Supabase
     reorder.mutate(updates);
   }
-
 
   function startEdit(review: ReviewRow) {
     setEditing(review);
@@ -958,7 +990,7 @@ function ReviewsPanel() {
       rating: review.rating,
       review_text: review.review_text,
       reviewer_role: review.reviewer_role ?? "",
-        reviewer_avatar_url: review.reviewer_avatar_url ?? null,
+      reviewer_avatar_url: review.reviewer_avatar_url ?? null,
       is_local_guide: review.is_local_guide,
       media_url: review.media_url ?? null,
       reviewer_url: review.reviewer_url ?? null,
@@ -989,8 +1021,12 @@ function ReviewsPanel() {
               onChange={(e) => setForm({ ...form, reviewer_name: e.target.value })}
             />
           </Field>
-          
-          <Field label="Foto Profil (Opsional)" htmlFor="r-avatar" hint="Paste URL foto profil pelanggan atau unggah gambar.">
+
+          <Field
+            label="Foto Profil (Opsional)"
+            htmlFor="r-avatar"
+            hint="Paste URL foto profil pelanggan atau unggah gambar."
+          >
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 id="r-avatar"
@@ -999,7 +1035,7 @@ function ReviewsPanel() {
                 onChange={(e) => setForm({ ...form, reviewer_avatar_url: e.target.value })}
                 placeholder="URL Foto atau klik Unggah ->"
               />
-              <FileUploadButton 
+              <FileUploadButton
                 onUploadSuccess={(url) => setForm({ ...form, reviewer_avatar_url: url })}
                 label="Unggah"
                 className="shrink-0"
@@ -1007,7 +1043,11 @@ function ReviewsPanel() {
             </div>
             {form.reviewer_avatar_url && (
               <div className="mt-3 relative size-12 rounded-full border border-border bg-muted overflow-hidden flex items-center justify-center">
-                <img src={form.reviewer_avatar_url} alt="Avatar preview" className="h-full w-full object-cover" />
+                <img
+                  src={form.reviewer_avatar_url}
+                  alt="Avatar preview"
+                  className="h-full w-full object-cover"
+                />
                 <button
                   type="button"
                   onClick={() => setForm({ ...form, reviewer_avatar_url: null })}
@@ -1018,7 +1058,11 @@ function ReviewsPanel() {
               </div>
             )}
           </Field>
-          <Field label="Link Review" htmlFor="r-url" hint="Paste URL profil/ulasan Google Maps pelanggan agar nama bisa diklik (menambah trust).">
+          <Field
+            label="Link Review"
+            htmlFor="r-url"
+            hint="Paste URL profil/ulasan Google Maps pelanggan agar nama bisa diklik (menambah trust)."
+          >
             <input
               id="r-url"
               className={inputClass}
@@ -1027,7 +1071,11 @@ function ReviewsPanel() {
               placeholder="https://maps.app.goo.gl/..."
             />
           </Field>
-          <Field label="Menu Pesanan (opsional)" htmlFor="r-bike" hint="Contoh: Lele Bakar, Ayam Bule, Nila, Gurameh">
+          <Field
+            label="Menu Pesanan (opsional)"
+            htmlFor="r-bike"
+            hint="Contoh: Lele Bakar, Ayam Bule, Nila, Gurameh"
+          >
             <input
               id="r-bike"
               className={inputClass}
@@ -1036,7 +1084,11 @@ function ReviewsPanel() {
               placeholder="Lele / Ayam / Nila"
             />
           </Field>
-          <Field label="Balasan Pemilik (opsional)" htmlFor="r-reply" hint="Balasan publik dari Pak Sutrisno (meningkatkan kepercayaan).">
+          <Field
+            label="Balasan Pemilik (opsional)"
+            htmlFor="r-reply"
+            hint="Balasan publik dari Pak Sutrisno (meningkatkan kepercayaan)."
+          >
             <textarea
               id="r-reply"
               className={inputClass}
@@ -1046,30 +1098,30 @@ function ReviewsPanel() {
               placeholder="Terima kasih atas kepercayaannya..."
             />
           </Field>
-                      <Field label="Peran / lokasi (opsional)" htmlFor="r-role">
-              <select
-                id="r-role"
-                className={inputClass}
-                value={form.reviewer_role ?? ""}
-                onChange={(e) => setForm({ ...form, reviewer_role: e.target.value })}
-              >
-                <option value="">-- Tidak Ada / Kosong --</option>
-                <option value="Local Guide">Local Guide (Tanpa Level)</option>
-                <option value="Local Guide Level 1">Local Guide Level 1</option>
-                <option value="Local Guide Level 2">Local Guide Level 2</option>
-                <option value="Local Guide Level 3">Local Guide Level 3</option>
-                <option value="Local Guide Level 4">Local Guide Level 4</option>
-                <option value="Local Guide Level 5">Local Guide Level 5</option>
-                <option value="Local Guide Level 6">Local Guide Level 6</option>
-                <option value="Local Guide Level 7">Local Guide Level 7</option>
-                <option value="Local Guide Level 8">Local Guide Level 8</option>
-                <option value="Local Guide Level 9">Local Guide Level 9</option>
-                <option value="Local Guide Level 10">Local Guide Level 10</option>
-                {form.reviewer_role && !form.reviewer_role.startsWith('Local Guide') && (
-                  <option value={form.reviewer_role}>{form.reviewer_role} (Data Custom Lama)</option>
-                )}
-              </select>
-            </Field>
+          <Field label="Peran / lokasi (opsional)" htmlFor="r-role">
+            <select
+              id="r-role"
+              className={inputClass}
+              value={form.reviewer_role ?? ""}
+              onChange={(e) => setForm({ ...form, reviewer_role: e.target.value })}
+            >
+              <option value="">-- Tidak Ada / Kosong --</option>
+              <option value="Local Guide">Local Guide (Tanpa Level)</option>
+              <option value="Local Guide Level 1">Local Guide Level 1</option>
+              <option value="Local Guide Level 2">Local Guide Level 2</option>
+              <option value="Local Guide Level 3">Local Guide Level 3</option>
+              <option value="Local Guide Level 4">Local Guide Level 4</option>
+              <option value="Local Guide Level 5">Local Guide Level 5</option>
+              <option value="Local Guide Level 6">Local Guide Level 6</option>
+              <option value="Local Guide Level 7">Local Guide Level 7</option>
+              <option value="Local Guide Level 8">Local Guide Level 8</option>
+              <option value="Local Guide Level 9">Local Guide Level 9</option>
+              <option value="Local Guide Level 10">Local Guide Level 10</option>
+              {form.reviewer_role && !form.reviewer_role.startsWith("Local Guide") && (
+                <option value={form.reviewer_role}>{form.reviewer_role} (Data Custom Lama)</option>
+              )}
+            </select>
+          </Field>
           <Field label="Rating (1–5)" htmlFor="r-rating">
             <select
               id="r-rating"
@@ -1085,23 +1137,29 @@ function ReviewsPanel() {
             </select>
           </Field>
           <Field label="Isi ulasan" htmlFor="r-text">
-              <div className="relative">
-                <textarea
-                  id="r-text"
-                  required
-                  rows={4}
-                  maxLength={500}
-                  className="w-full rounded-lg border border-input bg-background p-3 pb-7 text-base text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
-                  value={form.review_text}
-                  onChange={(e) => setForm({ ...form, review_text: e.target.value })}
-                />
-                <span className={`absolute bottom-2 right-3 text-[10px] font-medium ${form.review_text.length >= 500 ? 'text-red-500' : 'text-muted-foreground'}`}>
-                  {form.review_text.length}/500
-                </span>
-              </div>
-            </Field>
-          
-          <Field label="Media Ulasan (Foto / Video Opsional)" htmlFor="r-media" hint="Paste URL gambar/video dari luar (untuk hemat bandwidth), atau klik Unggah ke Supabase.">
+            <div className="relative">
+              <textarea
+                id="r-text"
+                required
+                rows={4}
+                maxLength={500}
+                className="w-full rounded-lg border border-input bg-background p-3 pb-7 text-base text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
+                value={form.review_text}
+                onChange={(e) => setForm({ ...form, review_text: e.target.value })}
+              />
+              <span
+                className={`absolute bottom-2 right-3 text-[10px] font-medium ${form.review_text.length >= 500 ? "text-red-500" : "text-muted-foreground"}`}
+              >
+                {form.review_text.length}/500
+              </span>
+            </div>
+          </Field>
+
+          <Field
+            label="Media Ulasan (Foto / Video Opsional)"
+            htmlFor="r-media"
+            hint="Paste URL gambar/video dari luar (untuk hemat bandwidth), atau klik Unggah ke Supabase."
+          >
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 id="r-media"
@@ -1110,7 +1168,7 @@ function ReviewsPanel() {
                 onChange={(e) => setForm({ ...form, media_url: e.target.value })}
                 placeholder="Paste URL (https://...) atau klik Unggah 👉"
               />
-              <FileUploadButton 
+              <FileUploadButton
                 onUploadSuccess={(url) => setForm({ ...form, media_url: url })}
                 label="Unggah"
                 className="shrink-0"
@@ -1118,7 +1176,10 @@ function ReviewsPanel() {
             </div>
             {form.media_url && (
               <div className="mt-3 relative w-full h-32 rounded-lg border border-border bg-muted/20 overflow-hidden flex items-center justify-center">
-                {(form.media_url.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) || form.media_url.includes('.mp4') || form.media_url.includes('.webm') || form.media_url.includes('.mov')) ? (
+                {form.media_url.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) ||
+                form.media_url.includes(".mp4") ||
+                form.media_url.includes(".webm") ||
+                form.media_url.includes(".mov") ? (
                   <video src={form.media_url} className="h-full object-contain" controls />
                 ) : (
                   <img src={form.media_url} alt="Media ulasan" className="h-full object-contain" />
@@ -1175,58 +1236,61 @@ function ReviewsPanel() {
         ) : (
           <ul className="space-y-3">
             {reviews!.map((review, index) => (
-              <li key={review.id} className="rounded-xl border border-border bg-background p-4 flex gap-4">
-                  <div className="flex flex-col gap-1 shrink-0 pt-1">
-                    <button 
-                      type="button" 
-                      onClick={() => moveReview(index, 'up')}
-                      disabled={index === 0 || reorder.isPending}
-                      className="rounded bg-muted px-1.5 py-0.5 text-xs font-bold text-muted-foreground hover:bg-muted/80 disabled:opacity-30 disabled:cursor-not-allowed"
-                      title="Pindah ke Atas"
-                    >
-                      &#9650;
-                    </button>
-                    <button 
+              <li
+                key={review.id}
+                className="rounded-xl border border-border bg-background p-4 flex gap-4"
+              >
+                <div className="flex flex-col gap-1 shrink-0 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => moveReview(index, "up")}
+                    disabled={index === 0 || reorder.isPending}
+                    className="rounded bg-muted px-1.5 py-0.5 text-xs font-bold text-muted-foreground hover:bg-muted/80 disabled:opacity-30 disabled:cursor-not-allowed"
+                    title="Pindah ke Atas"
+                  >
+                    &#9650;
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => moveReview(index, "down")}
+                    disabled={index === reviews.length - 1 || reorder.isPending}
+                    className="rounded bg-muted px-1.5 py-0.5 text-xs font-bold text-muted-foreground hover:bg-muted/80 disabled:opacity-30 disabled:cursor-not-allowed"
+                    title="Pindah ke Bawah"
+                  >
+                    &#9660;
+                  </button>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-semibold text-foreground">{review.reviewer_name}</span>
+                    <span className="text-sm text-gold">{"★".repeat(review.rating)}</span>
+                    {review.is_local_guide ? (
+                      <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                        Local Guide
+                      </span>
+                    ) : null}
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">{review.review_text}</p>
+                  <div className="mt-3 flex gap-2">
+                    <button
                       type="button"
-                      onClick={() => moveReview(index, 'down')}
-                      disabled={index === reviews.length - 1 || reorder.isPending}
-                      className="rounded bg-muted px-1.5 py-0.5 text-xs font-bold text-muted-foreground hover:bg-muted/80 disabled:opacity-30 disabled:cursor-not-allowed"
-                      title="Pindah ke Bawah"
+                      onClick={() => startEdit(review)}
+                      className="rounded-md border border-input px-3 py-2 text-xs font-medium text-foreground transition hover:bg-accent"
                     >
-                      &#9660;
+                      Ubah
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (confirm(`Hapus ulasan dari ${review.reviewer_name}?`)) {
+                          remove.mutate(review.id);
+                        }
+                      }}
+                      className="rounded-md border border-input px-3 py-2 text-xs font-medium text-destructive transition hover:bg-destructive/10"
+                    >
+                      Hapus
                     </button>
                   </div>
-                  <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-semibold text-foreground">{review.reviewer_name}</span>
-                  <span className="text-sm text-gold">{"★".repeat(review.rating)}</span>
-                  {review.is_local_guide ? (
-                    <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
-                      Local Guide
-                    </span>
-                  ) : null}
-                </div>
-                <p className="mt-2 text-sm text-muted-foreground">{review.review_text}</p>
-                <div className="mt-3 flex gap-2">
-                  <button
-                    type="button"
-                    onClick={() => startEdit(review)}
-                    className="rounded-md border border-input px-3 py-2 text-xs font-medium text-foreground transition hover:bg-accent"
-                  >
-                    Ubah
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (confirm(`Hapus ulasan dari ${review.reviewer_name}?`)) {
-                        remove.mutate(review.id);
-                      }
-                    }}
-                    className="rounded-md border border-input px-3 py-2 text-xs font-medium text-destructive transition hover:bg-destructive/10"
-                  >
-                    Hapus
-                  </button>
-                </div>
                 </div>
               </li>
             ))}
@@ -1241,37 +1305,53 @@ function AdvancedPanel() {
   const { form, setForm, isPending, mutation, status } = useSettingsForm();
 
   return (
-    <Panel 
-      title="SEO & Pengaturan Lanjutan (Advanced Mode)" 
+    <Panel
+      title="SEO & Pengaturan Lanjutan (Advanced Mode)"
       description="Injeksi kode pelacakan analitik (GA4/Meta), kustomisasi desain (CSS), dan skema mesin pencari (JSON-LD)."
     >
       <div className="space-y-6">
-        
         {/* PANDUAN SINGKAT */}
         <div className="rounded-xl border-l-4 border-l-blue-500 bg-blue-500/10 p-4 mb-6">
-          <h4 className="text-sm font-bold text-blue-700 dark:text-blue-400 mb-2">Panduan Penggunaan (Untuk Pemula)</h4>
+          <h4 className="text-sm font-bold text-blue-700 dark:text-blue-400 mb-2">
+            Panduan Penggunaan (Untuk Pemula)
+          </h4>
           <p className="text-xs text-blue-900/80 dark:text-blue-200/80 mb-2">
-            Halaman ini khusus untuk kode teknis pihak ketiga. Jika Anda tidak paham, <strong>biarkan saja kosong</strong> (website akan tetap berjalan 100% normal).
+            Halaman ini khusus untuk kode teknis pihak ketiga. Jika Anda tidak paham,{" "}
+            <strong>biarkan saja kosong</strong> (website akan tetap berjalan 100% normal).
           </p>
         </div>
 
         <div className="space-y-4 rounded-xl border border-border bg-muted/20 p-4">
           <div className="flex flex-col md:flex-row md:items-start gap-4">
             <div className="flex-1 space-y-2">
-              <h4 className="text-sm font-semibold">1. Injeksi Script Head (GTM, GA4, Meta Pixel)</h4>
+              <h4 className="text-sm font-semibold">
+                1. Injeksi Script Head (GTM, GA4, Meta Pixel)
+              </h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong>Kegunaan:</strong> Untuk memasang alat pelacak pengunjung seperti Google Analytics, Google Tag Manager, atau Facebook Pixel. 
-                <br/><br/>
-                <strong>Cara Pakai:</strong> Copy kode yang diberikan oleh Google/Facebook, lalu paste ke kotak di bawah ini. Kode akan otomatis ditanam di dalam tag <code>&lt;head&gt;</code> website Anda.
+                <strong>Kegunaan:</strong> Untuk memasang alat pelacak pengunjung seperti Google
+                Analytics, Google Tag Manager, atau Facebook Pixel.
+                <br />
+                <br />
+                <strong>Cara Pakai:</strong> Copy kode yang diberikan oleh Google/Facebook, lalu
+                paste ke kotak di bawah ini. Kode akan otomatis ditanam di dalam tag{" "}
+                <code>&lt;head&gt;</code> website Anda.
               </p>
               <div className="bg-background rounded p-2 border border-border/50 text-[10px] text-muted-foreground font-mono mt-2">
-                Contoh (Google Analytics):<br/>
-                &lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"&gt;&lt;/script&gt;<br/>
-                &lt;script&gt;<br/>
-                &nbsp;&nbsp;window.dataLayer = window.dataLayer || [];<br/>
-                &nbsp;&nbsp;function gtag() {'{'}dataLayer.push(arguments);{'}'}<br/>
-                &nbsp;&nbsp;gtag('js', new Date());<br/>
-                &nbsp;&nbsp;gtag('config', 'G-XXXXX');<br/>
+                Contoh (Google Analytics):
+                <br />
+                &lt;script async
+                src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"&gt;&lt;/script&gt;
+                <br />
+                &lt;script&gt;
+                <br />
+                &nbsp;&nbsp;window.dataLayer = window.dataLayer || [];
+                <br />
+                &nbsp;&nbsp;function gtag() {"{"}dataLayer.push(arguments);{"}"}
+                <br />
+                &nbsp;&nbsp;gtag('js', new Date());
+                <br />
+                &nbsp;&nbsp;gtag('config', 'G-XXXXX');
+                <br />
                 &lt;/script&gt;
               </div>
             </div>
@@ -1292,9 +1372,13 @@ function AdvancedPanel() {
             <div className="flex-1 space-y-2">
               <h4 className="text-sm font-semibold">2. Skema Pencarian (Custom JSON-LD)</h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong>Kegunaan:</strong> Membantu robot Google memahami bahwa website ini adalah "Ikan Bakar", sehingga SEO lokal Anda lebih kuat.
-                <br/><br/>
-                <strong>Penting:</strong> Jika dikosongkan, sistem kami <strong>sudah otomatis</strong> membuatkan skema yang sangat baik berdasarkan info di tab "Info dapur". Isi ini HANYA jika Pakar SEO Anda meminta format khusus.
+                <strong>Kegunaan:</strong> Membantu robot Google memahami bahwa website ini adalah
+                "Ikan Bakar", sehingga SEO lokal Anda lebih kuat.
+                <br />
+                <br />
+                <strong>Penting:</strong> Jika dikosongkan, sistem kami{" "}
+                <strong>sudah otomatis</strong> membuatkan skema yang sangat baik berdasarkan info
+                di tab "Info dapur". Isi ini HANYA jika Pakar SEO Anda meminta format khusus.
               </p>
             </div>
             <div className="w-full md:w-[60%] shrink-0">
@@ -1318,15 +1402,22 @@ function AdvancedPanel() {
             <div className="flex-1 space-y-2">
               <h4 className="text-sm font-semibold">3. Custom CSS (Gaya Visual Khusus)</h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong>Kegunaan:</strong> Memaksa perubahan warna, ukuran, atau menyembunyikan elemen tertentu tanpa harus mengubah kode asli website.
-                <br/><br/>
-                <strong>Hati-hati:</strong> Salah isi bisa membuat tampilan website berantakan. Gunakan hanya jika mengerti kode CSS dasar.
+                <strong>Kegunaan:</strong> Memaksa perubahan warna, ukuran, atau menyembunyikan
+                elemen tertentu tanpa harus mengubah kode asli website.
+                <br />
+                <br />
+                <strong>Hati-hati:</strong> Salah isi bisa membuat tampilan website berantakan.
+                Gunakan hanya jika mengerti kode CSS dasar.
               </p>
               <div className="bg-background rounded p-2 border border-border/50 text-[10px] text-muted-foreground font-mono mt-2">
-                Contoh (Ubah warna latar belakang murni hitam):<br/>
-                body {'{'} background-color: #000000 !important; {'}'}<br/><br/>
-                Contoh (Menyembunyikan logo/teks di navigasi):<br/>
-                .nav-logo {'{'} display: none !important; {'}'}
+                Contoh (Ubah warna latar belakang murni hitam):
+                <br />
+                body {"{"} background-color: #000000 !important; {"}"}
+                <br />
+                <br />
+                Contoh (Menyembunyikan logo/teks di navigasi):
+                <br />
+                .nav-logo {"{"} display: none !important; {"}"}
               </div>
             </div>
             <div className="w-full md:w-[60%] shrink-0">
@@ -1343,9 +1434,13 @@ body {
             </div>
           </div>
         </div>
-        
+
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <PrimaryButton type="button" onClick={() => mutation.mutate(form)} disabled={isPending || mutation.isPending}>
+          <PrimaryButton
+            type="button"
+            onClick={() => mutation.mutate(form)}
+            disabled={isPending || mutation.isPending}
+          >
             {mutation.isPending ? "Menyimpan..." : "Simpan Pengaturan Lanjutan"}
           </PrimaryButton>
           <StatusLine status={status} />
@@ -1358,38 +1453,48 @@ body {
 /* ---------------------------------- Survey Tab --------------------------------- */
 
 function SurveyTab() {
-  const { data: responses, isLoading, error } = useQuery({
-    queryKey: ['survey_responses'],
+  const {
+    data: responses,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["survey_responses"],
     queryFn: async () => {
-      const { data, error } = await supabase.from('survey_responses').select('*').order('created_at', { ascending: false });
+      const { data, error } = await supabase
+        .from("survey_responses")
+        .select("*")
+        .order("created_at", { ascending: false });
       if (error) throw error;
       return data;
-    }
+    },
   });
 
   const exportToCSV = () => {
     if (!responses || responses.length === 0) return;
-    
+
     // Create CSV header
-    const headers = ['Waktu', 'Nama', 'WhatsApp', 'Menu Favorit', 'Tingkat Pedas', 'Saran'];
-    
+    const headers = ["Waktu", "Nama", "WhatsApp", "Menu Favorit", "Tingkat Pedas", "Saran"];
+
     // Create CSV rows
-    const rows = responses.map(r => [
-      new Date(r.created_at).toLocaleString('id-ID'),
-      '"' + (r.nama || '').replace(/"/g, '""') + '"',
-      '"' + (r.whatsapp || '').replace(/"/g, '""') + '"',
-      '"' + (r.menu_favorit || '').replace(/"/g, '""') + '"',
-      '"' + (r.tingkat_pedas || '').replace(/"/g, '""') + '"',
-      '"' + (r.saran || '').replace(/"/g, '""') + '"'
+    const rows = responses.map((r) => [
+      new Date(r.created_at).toLocaleString("id-ID"),
+      '"' + (r.nama || "").replace(/"/g, '""') + '"',
+      '"' + (r.whatsapp || "").replace(/"/g, '""') + '"',
+      '"' + (r.menu_favorit || "").replace(/"/g, '""') + '"',
+      '"' + (r.tingkat_pedas || "").replace(/"/g, '""') + '"',
+      '"' + (r.saran || "").replace(/"/g, '""') + '"',
     ]);
-    
-    const csvContent = [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+    const csvContent = [headers.join(","), ...rows.map((e) => e.join(","))].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
-    
-    const link = document.createElement('a');
-    link.setAttribute('href', url);
-    link.setAttribute('download', `kuesioner_ikanbakar99_${new Date().toISOString().split('T')[0]}.csv`);
+
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute(
+      "download",
+      `kuesioner_ikanbakar99_${new Date().toISOString().split("T")[0]}.csv`,
+    );
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1397,12 +1502,15 @@ function SurveyTab() {
 
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <Panel title="Hasil Kuesioner Warga" description="Data langsung dari warga Puri Delta / sekitarnya.">
+      <Panel
+        title="Hasil Kuesioner Warga"
+        description="Data langsung dari warga Puri Delta / sekitarnya."
+      >
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 p-4 bg-muted/50 rounded-xl">
           <div>
             <p className="text-sm text-muted-foreground">Total Responden</p>
             <p className="text-3xl font-display font-bold text-foreground">
-              {isLoading ? '...' : (responses?.length || 0)}
+              {isLoading ? "..." : responses?.length || 0}
             </p>
           </div>
           <PrimaryButton onClick={exportToCSV} disabled={!responses?.length}>
@@ -1411,13 +1519,17 @@ function SurveyTab() {
         </div>
 
         {error ? (
-          <div className="text-red-500 p-4 bg-red-50 rounded-lg">Gagal memuat data: {(error as Error).message}</div>
+          <div className="text-red-500 p-4 bg-red-50 rounded-lg">
+            Gagal memuat data: {(error as Error).message}
+          </div>
         ) : isLoading ? (
           <div className="py-8 text-center text-muted-foreground">Memuat data kuesioner...</div>
         ) : responses?.length === 0 ? (
           <div className="py-12 text-center text-muted-foreground border-2 border-dashed rounded-xl">
-            Belum ada warga yang mengisi kuesioner.<br/>
-            Bagikan link <strong>https://ikanbakar99.vercel.app/kuesioner</strong> ke grup WhatsApp warga!
+            Belum ada warga yang mengisi kuesioner.
+            <br />
+            Bagikan link <strong>https://ikanbakar99.vercel.app/kuesioner</strong> ke grup WhatsApp
+            warga!
           </div>
         ) : (
           <div className="border rounded-lg overflow-hidden">
@@ -1436,12 +1548,16 @@ function SurveyTab() {
                     <tr key={i} className="bg-card hover:bg-muted/50 transition-colors">
                       <td className="px-4 py-3 font-medium text-foreground">
                         {r.nama}
-                        {r.whatsapp && <div className="text-xs font-normal text-muted-foreground mt-0.5">{r.whatsapp}</div>}
+                        {r.whatsapp && (
+                          <div className="text-xs font-normal text-muted-foreground mt-0.5">
+                            {r.whatsapp}
+                          </div>
+                        )}
                       </td>
                       <td className="px-4 py-3">{r.menu_favorit}</td>
                       <td className="px-4 py-3">{r.tingkat_pedas}</td>
                       <td className="px-4 py-3 hidden md:table-cell text-muted-foreground text-xs">
-                        {new Date(r.created_at).toLocaleDateString('id-ID')}
+                        {new Date(r.created_at).toLocaleDateString("id-ID")}
                       </td>
                     </tr>
                   ))}
@@ -1454,4 +1570,3 @@ function SurveyTab() {
     </div>
   );
 }
-

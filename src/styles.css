@@ -114,7 +114,6 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-
 .dark {
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
@@ -186,7 +185,9 @@
 }
 
 @utility bg-grid-pattern {
-  background-image: linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
 }
@@ -197,7 +198,7 @@
 }
 
 @utility bg-glow {
-  background: radial-gradient(circle at 50% 0%, var(--primary)/0.15 0%, transparent 50%);
+  background: radial-gradient(circle at 50% 0%, var(--primary) / 0.15 0%, transparent 50%);
 }
 
 @utility glass-card {
@@ -209,10 +210,10 @@
 @utility text-gradient {
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, var(--primary), var(--primary)/60);
+  background-image: linear-gradient(to right, var(--primary), var(--primary) / 60);
 }
 
-  @layer utilities {
+@layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

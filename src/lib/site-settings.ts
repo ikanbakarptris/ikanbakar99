@@ -50,7 +50,6 @@ export interface SiteSettings {
   updated_at?: string;
 }
 
-
 export type SiteSettingsInput = Omit<SiteSettings, "id" | "updated_at">;
 
 export const DEFAULT_SETTINGS: SiteSettingsInput = {
@@ -126,7 +125,6 @@ export const DEFAULT_SETTINGS: SiteSettingsInput = {
   active_template: "modern",
 };
 
-
 /** Untyped table handle — `site_settings` is absent from the generated types. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const table = () => (supabase as any).from("site_settings");
@@ -134,7 +132,8 @@ const table = () => (supabase as any).from("site_settings");
 export async function fetchSiteSettings(): Promise<SiteSettings | null> {
   const { data, error } = await table()
     .select("*")
-    .order('updated_at', { ascending: false }).limit(1)
+    .order("updated_at", { ascending: false })
+    .limit(1)
     .maybeSingle();
 
   if (error) {

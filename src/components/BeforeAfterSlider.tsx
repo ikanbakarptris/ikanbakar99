@@ -38,7 +38,7 @@ export function BeforeAfterSlider({
   };
 
   return (
-    <div 
+    <div
       className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-2xl shadow-xl select-none group"
       ref={containerRef}
       onMouseUp={() => setIsDragging(false)}
@@ -60,7 +60,7 @@ export function BeforeAfterSlider({
       </div>
 
       {/* Before Image (Top Layer clipped) */}
-      <div 
+      <div
         className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
@@ -68,7 +68,7 @@ export function BeforeAfterSlider({
           src={beforeImage}
           alt={beforeAlt}
           className="absolute inset-0 w-full h-full object-cover max-w-none"
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: "100%", height: "100%" }}
           loading="lazy"
           decoding="async"
         />
@@ -78,15 +78,17 @@ export function BeforeAfterSlider({
       </div>
 
       {/* Slider Line & Handle */}
-      <div 
+      <div
         className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 flex items-center justify-center group-hover:bg-primary transition-colors pointer-events-none"
         style={{ left: `calc(${sliderPosition}% - 2px)` }}
       >
         <div className="w-8 h-8 bg-white rounded-full shadow-[0_0_10px_rgba(0,0,0,0.3)] flex items-center justify-center text-primary transition-transform group-hover:scale-110">
-          <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true"><path d="M8 14V10H4v4h4zm8 0h4v-4h-4v4zM2 12c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2 2 6.48 2 12zm18 0c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8 8 3.58 8 8z"/></svg>
+          <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+            <path d="M8 14V10H4v4h4zm8 0h4v-4h-4v4zM2 12c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2 2 6.48 2 12zm18 0c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8 8 3.58 8 8z" />
+          </svg>
         </div>
       </div>
-      
+
       {/* Invisible range input for accessibility and fallback */}
       <input
         type="range"
