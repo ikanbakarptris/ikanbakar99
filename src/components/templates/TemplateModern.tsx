@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, UtensilsCrossed, Star, Image as ImageIcon, Sparkles, MapPin, ChevronRight, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { SHOP, SERVICES } from "@/lib/shop-data";
 import { reviewsQueryOptions } from "@/lib/reviews";
@@ -177,11 +177,19 @@ export default function TemplateModern() {
             <Stars /> {Number(shopRating).toFixed(1)}
           </span>
         </div>
-        <nav className="flex md:hidden w-full overflow-x-auto gap-6 px-4 py-2 border-t border-white/10 text-sm font-medium text-muted-foreground hide-scrollbar bg-background/30 backdrop-blur-md">
-          <a href="#layanan" className="whitespace-nowrap hover:text-foreground">Menu</a>
-          <a href="#reviews-heading" className="whitespace-nowrap hover:text-foreground">Ulasan</a>
-          <Link to="/galeri" className="whitespace-nowrap hover:text-foreground">Galeri</Link>
-          <Link to="/kuesioner" className="whitespace-nowrap text-primary font-bold">Kuesioner</Link>
+        <nav className="flex md:hidden w-full overflow-x-auto gap-2 px-4 py-2 border-t border-border/40 text-xs font-semibold text-muted-foreground hide-scrollbar bg-background/80 backdrop-blur-xl">
+          <a href="#layanan" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/60 hover:bg-muted text-foreground transition-all shrink-0">
+            <UtensilsCrossed className="size-3.5 text-primary" /> Menu
+          </a>
+          <a href="#reviews-heading" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/60 hover:bg-muted text-foreground transition-all shrink-0">
+            <Star className="size-3.5 text-amber-500 fill-amber-500" /> Ulasan
+          </a>
+          <Link to="/galeri" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary font-bold hover:bg-primary/20 transition-all shrink-0">
+            <ImageIcon className="size-3.5 text-primary" /> Galeri (33+ Foto)
+          </Link>
+          <Link to="/kuesioner" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold hover:bg-amber-500/20 transition-all shrink-0">
+            <Sparkles className="size-3.5" /> Kuesioner
+          </Link>
         </nav>
       </header>
 
@@ -373,7 +381,15 @@ export default function TemplateModern() {
                   ↗
                 </span>
               </a>
-              <Link to="/galeri" className="text-xs font-semibold text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center justify-center gap-1.5">Lihat galeri foto pelanggan <span aria-hidden="true" className="text-[10px]">?</span></Link>
+              <Link
+                to="/galeri"
+                className="text-xs font-semibold text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center justify-center gap-1.5"
+              >
+                Lihat galeri foto pelanggan{" "}
+                <span aria-hidden="true" className="text-[10px]">
+                  →
+                </span>
+              </Link>
             </div>
           </div>
           <div className="rounded-2xl border border-primary/30 bg-primary/10 p-5 hover:shadow-lg hover:bg-primary/15 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">

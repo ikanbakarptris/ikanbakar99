@@ -1,4 +1,4 @@
-﻿import { createPortal } from "react-dom";
+import { createPortal } from "react-dom";
 import { Share2, MessageCircle, Heart, X, User } from "lucide-react";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
@@ -136,107 +136,123 @@ export function SocialLightbox({
 
       {/* Right: Social Sidebar */}
       <div className="w-full md:w-[400px] bg-zinc-950 flex flex-col h-[50vh] md:h-full border-l border-white/10 animate-in slide-in-from-bottom-full md:slide-in-from-right-full duration-300">
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-white/10 bg-zinc-900/50 backdrop-blur-md shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-full bg-gradient-to-tr from-primary to-orange-500 p-[2px]">
-              <div className="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center">
-                <User className="size-5 text-white/80" />
+          {/* Header */}
+          <div className="flex items-center justify-between p-3.5 border-b border-white/10 bg-zinc-900/70 backdrop-blur-md shrink-0">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="size-9 rounded-full bg-gradient-to-tr from-primary to-orange-500 p-[2px] shrink-0">
+                <div className="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center">
+                  <User className="size-4 text-white/80" />
+                </div>
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-bold text-white text-sm truncate">{photo.name}</h3>
+                <div className="flex text-gold text-[10px]">
+                  {Array.from({ length: photo.stars || 5 }).map((_, i) => <span key={i}>★</span>)}
+                </div>
               </div>
             </div>
-            <div>
-              <h3 className="font-bold text-white text-sm">{photo.name}</h3>
-              <div className="flex text-gold text-[10px]">
-                {Array.from({ length: photo.stars || 5 }).map((_, i) => <span key={i}>★</span>)}
-              </div>
-            </div>
-          </div>
-          <button onClick={onClose} className="hidden md:flex p-2 rounded-full hover:bg-white/10 text-white/70 transition-colors">
-            <X className="size-6" />
-          </button>
-        </div>
-
-        {/* Comments Scrollable Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-5 scrollbar-thin scrollbar-thumb-white/10 hide-scrollbar">
-          {/* Original Review (Caption) */}
-          {photo.text && (
-            <div className="flex gap-3">
-              <div className="size-8 rounded-full bg-zinc-800 shrink-0 flex items-center justify-center"><User className="size-4 text-white/50" /></div>
-              <div>
-                <p className="text-sm text-white/90 leading-relaxed">
-                  <span className="font-bold mr-2">{photo.name}</span>
-                  {photo.text}
-                </p>
-                <p className="text-xs text-white/40 mt-1">Diposting bersama ulasan</p>
-              </div>
-            </div>
-          )}
-
-          {/* Dummy Comment */}
-          <div className="flex gap-3">
-            <div className="size-8 rounded-full bg-blue-900 shrink-0 flex items-center justify-center"><User className="size-4 text-white/50" /></div>
-            <div>
-              <p className="text-sm text-white/90 leading-relaxed">
-                <span className="font-bold mr-2">Admin Ikanbakar99</span>
-                Terima kasih atas kunjungannya! Ditunggu pesanan berikutnya 🙏
-              </p>
-              <p className="text-xs text-white/40 mt-1">Beberapa hari yang lalu</p>
-            </div>
+            <button
+              onClick={onClose}
+              className="p-2 rounded-full hover:bg-white/10 text-white/80 active:scale-95 transition-all"
+              aria-label="Tutup lightbox"
+            >
+              <X className="size-5" />
+            </button>
           </div>
 
-          {/* User Added Comments */}
-          {comments.map(c => (
-            <div key={c.id} className="flex gap-3 animate-in slide-in-from-right-4 fade-in">
-              <div className="size-8 rounded-full bg-green-900 shrink-0 flex items-center justify-center"><User className="size-4 text-white/50" /></div>
-              <div>
-                <p className="text-sm text-white/90 leading-relaxed">
-                  <span className="font-bold mr-2">{c.name}</span>
-                  {c.text}
-                </p>
-                <p className="text-xs text-white/40 mt-1">{c.time}</p>
+          {/* Comments Scrollable Area */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-white/10 hide-scrollbar">
+            {/* Original Review (Caption) */}
+            {photo.text && (
+              <div className="flex gap-3">
+                <div className="size-8 rounded-full bg-zinc-800 shrink-0 flex items-center justify-center">
+                  <User className="size-4 text-white/50" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm text-white/90 leading-relaxed">
+                    <span className="font-bold mr-2 text-white">{photo.name}</span>
+                    {photo.text}
+                  </p>
+                  <p className="text-xs text-white/40 mt-1">Ulasan Pelanggan</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Actions Bar */}
-        <div className="p-4 border-t border-white/10 bg-zinc-900/50 shrink-0">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              <button onClick={toggleLike} className="group transition-transform active:scale-75">
-                <Heart className={`size-7 transition-colors ${hasLiked ? "fill-red-500 text-red-500" : "text-white group-hover:text-white/70"}`} />
-              </button>
-              <button className="group transition-transform active:scale-75">
-                <MessageCircle className="size-7 text-white group-hover:text-white/70" />
-              </button>
-              <button onClick={handleShare} className="group transition-transform active:scale-75">
-                <Share2 className="size-7 text-white group-hover:text-white/70" />
-              </button>
-            </div>
-          </div>
-          <p className="text-white font-bold text-sm mb-3">
-            {likes} Suka
-          </p>
-
-          {/* Comment Input */}
-          <form onSubmit={handleAddComment} className="relative flex items-center">
-            <input 
-              type="text" 
-              placeholder="Tambahkan komentar..." 
-              value={commentInput}
-              onChange={(e) => setCommentInput(e.target.value)}
-              className="w-full bg-transparent border-none text-white text-sm focus:ring-0 placeholder:text-white/40 pl-0 pr-10"
-            />
-            {commentInput.trim() && (
-              <button type="submit" className="absolute right-0 text-primary font-bold text-sm hover:text-primary/80 transition-colors">
-                Kirim
-              </button>
             )}
-          </form>
-        </div>
-      </div>
 
-    </div>,
-    document.body
-  );
-}
+            {/* Admin Response */}
+            <div className="flex gap-3 bg-primary/5 rounded-2xl p-3 border border-primary/10">
+              <div className="size-8 rounded-full bg-primary/20 shrink-0 flex items-center justify-center">
+                <span className="text-xs font-bold text-primary">PT</span>
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-bold text-primary mb-0.5">Admin Ikan Bakar P. Tris</p>
+                <p className="text-xs text-white/90 leading-relaxed">
+                  Terima kasih atas kunjungannya kak! Ditunggu kedatangannya kembali 🙏
+                </p>
+              </div>
+            </div>
+
+            {/* User Added Comments */}
+            {comments.map(c => (
+              <div key={c.id} className="flex gap-3 animate-in slide-in-from-right-4 fade-in">
+                <div className="size-8 rounded-full bg-emerald-900/60 border border-emerald-500/20 shrink-0 flex items-center justify-center">
+                  <User className="size-4 text-emerald-400" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm text-white/90 leading-relaxed">
+                    <span className="font-bold mr-2 text-emerald-400">{c.name}</span>
+                    {c.text}
+                  </p>
+                  <p className="text-[11px] text-white/40 mt-0.5">{c.time}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Actions Bar */}
+          <div className="p-3.5 border-t border-white/10 bg-zinc-900/70 shrink-0 pb-[calc(1rem+env(safe-area-inset-bottom))]">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={toggleLike}
+                  className="group flex items-center gap-1.5 transition-transform active:scale-75"
+                  aria-label="Sukai foto"
+                >
+                  <Heart className={`size-6 transition-colors ${hasLiked ? "fill-red-500 text-red-500" : "text-white group-hover:text-red-400"}`} />
+                  <span className="text-xs font-bold text-white/90">{likes}</span>
+                </button>
+                <button
+                  onClick={handleShare}
+                  className="group flex items-center gap-1.5 transition-transform active:scale-75 text-white/80 hover:text-white"
+                  aria-label="Bagikan foto"
+                >
+                  <Share2 className="size-5" />
+                  <span className="text-xs font-semibold">Bagikan</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Comment Input */}
+            <form onSubmit={handleAddComment} className="relative flex items-center">
+              <input 
+                type="text" 
+                placeholder="Tulis komentar lezat..." 
+                value={commentInput}
+                onChange={(e) => setCommentInput(e.target.value)}
+                className="w-full bg-zinc-800/80 rounded-full px-4 py-2.5 text-white text-xs sm:text-sm placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-primary border border-white/10 pr-16"
+              />
+              {commentInput.trim() && (
+                <button
+                  type="submit"
+                  className="absolute right-1.5 px-3 py-1 rounded-full bg-primary text-primary-foreground font-bold text-xs hover:bg-primary/90 transition-all active:scale-95 shadow-sm"
+                >
+                  Kirim
+                </button>
+              )}
+            </form>
+          </div>
+        </div>
+
+      </div>,
+      document.body
+    );
+  }

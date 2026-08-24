@@ -137,17 +137,23 @@ function ReviewCard({ review, onImageClick }: { review: CustomerReview; onImageC
             />
           ) : (
             <button
-                onClick={onImageClick}
-                className="block w-full h-full text-left"
-                aria-label="Lihat foto ulasan asli dalam layar penuh"
-              >
+              onClick={onImageClick}
+              className="group/img relative block w-full text-left overflow-hidden rounded-xl"
+              aria-label="Lihat foto ulasan asli dalam layar penuh"
+            >
               <img
                 src={review.mediaUrl}
                 alt={"Foto hidangan ikan bakar oleh pelanggan " + review.name}
                 width={400}
                 height={300}
-                className="hidden"
-                loading="lazy" /> </button>
+                className="w-full h-44 sm:h-52 object-cover transition-transform duration-500 group-hover/img:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 md:opacity-0 md:group-hover/img:opacity-100 transition-opacity" />
+              <span className="absolute bottom-2.5 left-2.5 inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-md px-2.5 py-1 text-[11px] font-medium text-white shadow-md">
+                🔍 Tap untuk perbesar
+              </span>
+            </button>
           )}
         </div>
       ) : null}
@@ -341,7 +347,19 @@ export function CustomerReviews({
       <p className="mt-2 text-center text-xs text-muted-foreground md:hidden">
         Geser untuk lihat ulasan lainnya →
       </p>
-          {selectedPhoto && typeof document !== "undefined" && (
+
+      {/* CTA Button to Full Gallery */}
+      <div className="mt-6 flex justify-center">
+        <Link
+          to="/galeri"
+          className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2.5 text-xs sm:text-sm font-semibold text-primary shadow-sm hover:bg-primary/20 hover:scale-105 active:scale-95 transition-all duration-300"
+        >
+          <span>📸 Lihat Semua Foto Galeri Pelanggan (33+ Momen)</span>
+          <span aria-hidden="true">→</span>
+        </Link>
+      </div>
+
+      {selectedPhoto && typeof document !== "undefined" && (
         <SocialLightbox 
           photo={selectedPhoto} 
           onClose={() => setSelectedPhoto(null)} 

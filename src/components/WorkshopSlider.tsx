@@ -60,8 +60,11 @@ export function WorkshopSlider({ images }: { images?: string[] }) {
                       />
                     )}
                     <div className="absolute inset-0 bg-black/0 group-hover/slide:bg-black/10 transition-colors duration-300" />
+                    <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-md px-2.5 py-1 text-[11px] font-medium text-white shadow-md md:hidden">
+                      🔍 Tap untuk detail
+                    </span>
                     <button
-                      className="absolute bottom-3 right-3 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full backdrop-blur-sm opacity-0 group-hover/slide:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover/slide:translate-y-0 shadow-lg"
+                      className="absolute bottom-3 right-3 p-2 bg-black/60 hover:bg-black/80 text-white rounded-full backdrop-blur-sm opacity-90 md:opacity-0 md:group-hover/slide:opacity-100 transition-all duration-300 transform translate-y-0 shadow-lg"
                       aria-label="Tampilkan layar penuh"
                     >
                       <Maximize2 className="size-4" />
