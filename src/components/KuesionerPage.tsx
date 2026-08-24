@@ -191,6 +191,7 @@ export default function KuesionerPage() {
               <Label>Seberapa pedas sambal yang ideal menurut Anda?</Label>
               <div className="pt-6 pb-2">
                 <Slider
+                  aria-label="Tingkat Kepedasan Sambal"
                   defaultValue={[50]}
                   max={100}
                   step={50}
@@ -252,4 +253,5 @@ export default function KuesionerPage() {
     </div>
   );
 }
+
 

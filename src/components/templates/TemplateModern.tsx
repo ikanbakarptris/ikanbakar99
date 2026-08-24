@@ -156,12 +156,20 @@ export default function TemplateModern() {
         <div dangerouslySetInnerHTML={{ __html: settings.advanced_head_scripts }} />
       )}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
-        <div className="mx-auto grid max-w-5xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3">
-          <div className="min-w-0">
-            <p className="truncate font-display text-xl font-bold tracking-tight">{shopName}</p>
-            <p className="truncate text-xs text-muted-foreground">{headerSubtitle}</p>
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
+          <div className="min-w-0 flex items-center gap-8">
+            <div>
+              <p className="truncate font-display text-xl font-bold tracking-tight">{shopName}</p>
+              <p className="truncate text-xs text-muted-foreground">{headerSubtitle}</p>
+            </div>
+            <nav className="hidden md:flex items-center gap-5 text-sm font-medium text-muted-foreground">
+              <a href="#layanan" className="hover:text-foreground transition-colors">Menu</a>
+              <a href="#reviews-heading" className="hover:text-foreground transition-colors">Ulasan</a>
+              <a href="/ulasan" className="hover:text-foreground transition-colors">Galeri</a>
+              <a href="/kuesioner" className="hover:text-primary transition-colors text-primary font-bold">Kuesioner</a>
+            </nav>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
             <WhatsAppCta className="!min-h-10 !px-5 !py-2.5" url={dynamicWaUrl} text={ctaWaText} />
           </div>
           <span className="shrink-0 rounded-full bg-muted px-3 py-1.5 text-xs font-semibold md:hidden">
@@ -223,7 +231,7 @@ export default function TemplateModern() {
                     href={settings.social_facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-all duration-300 hover:-translate-y-1 hover:text-[#1877F2] hover:drop-shadow-[0_0_8px_rgba(24,119,242,0.8)] flex items-center justify-center p-1"
+                    className="transition-all duration-300 hover:-translate-y-1 hover:text-[#1877F2] hover:drop-shadow-[0_0_8px_rgba(24,119,242,0.8)] flex items-center justify-center p-2.5"
                     aria-label="Facebook"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -236,7 +244,7 @@ export default function TemplateModern() {
                     href={settings.social_instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-all duration-300 hover:-translate-y-1 hover:text-[#F56040] hover:drop-shadow-[0_0_8px_rgba(245,96,64,0.8)] flex items-center justify-center p-1"
+                    className="transition-all duration-300 hover:-translate-y-1 hover:text-[#F56040] hover:drop-shadow-[0_0_8px_rgba(245,96,64,0.8)] flex items-center justify-center p-2.5"
                     aria-label="Instagram"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -249,7 +257,7 @@ export default function TemplateModern() {
                     href={settings.social_tiktok}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-all duration-300 hover:-translate-y-1 hover:text-[#000000] dark:hover:text-[#FFFFFF] hover:drop-shadow-[0_0_8px_rgba(0,0,0,0.6)] dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] flex items-center justify-center p-1"
+                    className="transition-all duration-300 hover:-translate-y-1 hover:text-[#000000] dark:hover:text-[#FFFFFF] hover:drop-shadow-[0_0_8px_rgba(0,0,0,0.6)] dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] flex items-center justify-center p-2.5"
                     aria-label="TikTok"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -261,7 +269,7 @@ export default function TemplateModern() {
                   href={dynamicWaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-all duration-300 hover:-translate-y-1 hover:text-[#25D366] hover:drop-shadow-[0_0_8px_rgba(37,211,102,0.8)] flex items-center justify-center p-1"
+                  className="transition-all duration-300 hover:-translate-y-1 hover:text-[#25D366] hover:drop-shadow-[0_0_8px_rgba(37,211,102,0.8)] flex items-center justify-center p-2.5"
                   aria-label="WhatsApp"
                 >
                   <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -273,7 +281,7 @@ export default function TemplateModern() {
                     <div className="h-4 w-px bg-border/60 mx-1" />
                     <a
                       href={`mailto:${settings.contact_email}`}
-                      className="transition-all duration-300 hover:-translate-y-1 hover:text-[#EA4335] hover:drop-shadow-[0_0_8px_rgba(234,67,53,0.8)] flex items-center gap-2 truncate text-foreground font-medium group p-1"
+                      className="transition-all duration-300 hover:-translate-y-1 hover:text-[#EA4335] hover:drop-shadow-[0_0_8px_rgba(234,67,53,0.8)] flex items-center gap-2 truncate text-foreground font-medium group p-2.5"
                     >
                       <svg
                         className="w-5 h-5 fill-muted-foreground group-hover:fill-[#EA4335] transition-colors"
@@ -313,7 +321,7 @@ export default function TemplateModern() {
             {servicesList.map((s, idx) => (
               <li
                 key={idx}
-                className="group rounded-2xl border border-border bg-card p-4 shadow-lift hover:-translate-y-1 hover:shadow-xl hover:border-primary/20 transition-all duration-300"
+                className={`group rounded-2xl border border-border bg-card p-4 shadow-lift hover:-translate-y-1 hover:shadow-xl hover:border-primary/20 transition-all duration-300 ${idx === 4 && servicesList.length === 5 ? "md:col-span-2" : ""}`}
               >
                 <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/15 text-xl group-hover:scale-110 group-hover:bg-primary/25 transition-transform duration-300">
@@ -443,5 +451,8 @@ export default function TemplateModern() {
     </div>
   );
 }
+
+
+
 
 

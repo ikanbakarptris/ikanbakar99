@@ -10,8 +10,8 @@ interface BeforeAfterSliderProps {
 export function BeforeAfterSlider({
   beforeImage,
   afterImage,
-  beforeAlt = "Sebelum servis",
-  afterAlt = "Sesudah servis",
+  beforeAlt = "Ikan mentah / segar",
+  afterAlt = "Setelah dibakar",
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -56,7 +56,7 @@ export function BeforeAfterSlider({
         decoding="async"
       />
       <div className="absolute bottom-4 right-4 bg-primary/90 text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm z-10 pointer-events-none">
-        SESUDAH
+        MATANG
       </div>
 
       {/* Before Image (Top Layer clipped) */}
@@ -73,7 +73,7 @@ export function BeforeAfterSlider({
           decoding="async"
         />
         <div className="absolute bottom-4 left-4 bg-background/90 text-foreground text-xs font-bold px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm z-10 pointer-events-none">
-          SEBELUM
+          SEGAR
         </div>
       </div>
 
@@ -99,8 +99,9 @@ export function BeforeAfterSlider({
         onMouseDown={() => setIsDragging(true)}
         onTouchStart={() => setIsDragging(true)}
         className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
-        aria-label="Geser untuk melihat perbandingan sebelum dan sesudah"
+        aria-label="Geser untuk melihat perbandingan SEGAR dan MATANG"
       />
     </div>
   );
 }
+

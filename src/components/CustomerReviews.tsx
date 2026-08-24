@@ -144,7 +144,9 @@ function ReviewCard({ review }: { review: CustomerReview }) {
             >
               <img
                 src={review.mediaUrl}
-                alt="Foto dari pelanggan"
+                alt={"Foto hidangan ikan bakar oleh pelanggan " + review.name}
+                width={400}
+                height={300}
                 className="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-105"
                 loading="lazy"
               />
@@ -344,3 +346,4 @@ export function CustomerReviews({
     </section>
   );
 }
+

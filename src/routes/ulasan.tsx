@@ -67,7 +67,7 @@ function UlasanPage() {
               Berdasarkan <strong className="text-foreground">{totalReviews} ulasan</strong>{" "}
               otentik, pelanggan kami memberikan rata-rata kepuasan{" "}
               <strong className="text-foreground">⭐ {averageRating}/5.0</strong>. Berikut adalah
-              bukti nyata dokumentasi hasil servis kami.
+              bukti nyata dokumentasi hidangan dan kepuasan pelanggan kami.
             </p>
           </div>
         </section>
@@ -127,3 +127,4 @@ function UlasanPage() {
     </div>
   );
 }
+
