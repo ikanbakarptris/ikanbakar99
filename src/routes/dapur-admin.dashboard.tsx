@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
@@ -32,10 +32,10 @@ export const Route = createFileRoute("/dapur-admin/dashboard")({
   },
   head: () => ({
     meta: [
-      { title: "Dashboard Pengelola — Ikanbakar99" },
+      { title: "Dashboard Pengelola â€” Ikanbakar99" },
       { name: "description", content: "Kelola pengaturan, media, dan ulasan Ikanbakar99." },
       { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: "Dashboard Pengelola — Ikanbakar99" },
+      { property: "og:title", content: "Dashboard Pengelola â€” Ikanbakar99" },
       { property: "og:description", content: "Panel pengelolaan konten dapur." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -167,13 +167,13 @@ function AdminDashboard() {
         aria-label="Menu dashboard"
         className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-card/95 backdrop-blur sm:sticky sm:top-16 sm:mx-auto sm:mt-0 sm:max-w-4xl sm:rounded-none sm:border-t-0"
       >
-        <div className="mx-auto grid max-w-4xl grid-cols-2 sm:grid-cols-4 md:grid-cols-7 overflow-x-auto">
+        <div className="mx-auto flex max-w-4xl overflow-x-auto whitespace-nowrap hide-scrollbar">
           {TABS.map((t) => (
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
               aria-current={tab === t.id ? "page" : undefined}
-              className={`py-3 text-sm font-medium transition ${
+              className={`flex-none px-4 py-3 text-sm font-medium transition ${
                 tab === t.id
                   ? "border-t-2 border-primary text-primary sm:border-t-0 sm:border-b-2"
                   : "text-muted-foreground hover:text-foreground"
@@ -354,7 +354,7 @@ function GlobalSettingsPanel() {
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <PrimaryButton type="submit" disabled={isPending || mutation.isPending}>
-            {mutation.isPending ? "Menyimpan…" : "Simpan perubahan"}
+            {mutation.isPending ? "Menyimpanâ€¦" : "Simpan perubahan"}
           </PrimaryButton>
           <StatusLine status={status} />
         </div>
@@ -451,7 +451,7 @@ function ServicesPanel() {
   const addService = () => {
     setForm({
       ...form,
-      services: [...services, { title: "Layanan Baru", desc: "", price: "", icon: "🔧" }],
+      services: [...services, { title: "Layanan Baru", desc: "", price: "", icon: "ðŸ”§" }],
     });
   };
 
@@ -1124,7 +1124,7 @@ function ReviewsPanel() {
               )}
             </select>
           </Field>
-          <Field label="Rating (1–5)" htmlFor="r-rating">
+          <Field label="Rating (1â€“5)" htmlFor="r-rating">
             <select
               id="r-rating"
               className={inputClass}
@@ -1168,7 +1168,7 @@ function ReviewsPanel() {
                 className={inputClass}
                 value={form.media_url || ""}
                 onChange={(e) => setForm({ ...form, media_url: e.target.value })}
-                placeholder="Paste URL (https://...) atau klik Unggah 👉"
+                placeholder="Paste URL (https://...) atau klik Unggah ðŸ‘‰"
               />
               <FileUploadButton
                 onUploadSuccess={(url) => setForm({ ...form, media_url: url })}
@@ -1191,7 +1191,7 @@ function ReviewsPanel() {
                   onClick={() => setForm({ ...form, media_url: null })}
                   className="absolute top-2 right-2 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/80 backdrop-blur-sm"
                 >
-                  ✕
+                  âœ•
                 </button>
               </div>
             )}
@@ -1209,7 +1209,7 @@ function ReviewsPanel() {
 
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
             <PrimaryButton type="submit" disabled={save.isPending}>
-              {save.isPending ? "Menyimpan…" : editing ? "Simpan perubahan" : "Tambah ulasan"}
+              {save.isPending ? "Menyimpanâ€¦" : editing ? "Simpan perubahan" : "Tambah ulasan"}
             </PrimaryButton>
             {editing ? (
               <button
@@ -1230,7 +1230,7 @@ function ReviewsPanel() {
 
       <Panel title="Daftar Ulasan" description="Kelola semua ulasan yang tersimpan di database.">
         {isPending ? (
-          <p className="text-sm text-muted-foreground">Memuat ulasan…</p>
+          <p className="text-sm text-muted-foreground">Memuat ulasanâ€¦</p>
         ) : error ? (
           <p className="text-sm text-destructive">Gagal memuat: {(error as Error).message}</p>
         ) : (reviews?.length ?? 0) === 0 ? (
@@ -1265,7 +1265,7 @@ function ReviewsPanel() {
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-semibold text-foreground">{review.reviewer_name}</span>
-                    <span className="text-sm text-gold">{"★".repeat(review.rating)}</span>
+                    <span className="text-sm text-gold">{"â˜…".repeat(review.rating)}</span>
                     {review.is_local_guide ? (
                       <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
                         Local Guide
@@ -1572,5 +1572,8 @@ function SurveyTab() {
     </div>
   );
 }
+
+
+
 
 
