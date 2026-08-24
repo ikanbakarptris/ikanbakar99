@@ -165,7 +165,7 @@ export default function TemplateModern() {
             <nav className="hidden md:flex items-center gap-5 text-sm font-medium text-muted-foreground">
               <a href="#layanan" className="hover:text-foreground transition-colors">Menu</a>
               <a href="#reviews-heading" className="hover:text-foreground transition-colors">Ulasan</a>
-              <a href="/ulasan" className="hover:text-foreground transition-colors">Galeri</a>
+              <a href="#galeri" className="hover:text-foreground transition-colors">Galeri</a>
               <a href="/kuesioner" className="hover:text-primary transition-colors text-primary font-bold">Kuesioner</a>
             </nav>
           </div>
@@ -451,6 +451,7 @@ export default function TemplateModern() {
     </div>
   );
 }
+
 
 
 

@@ -310,7 +310,7 @@ export function CustomerReviews({
         </div>
       </div>
 
-      {media ? <div className="mt-5">{media}</div> : null}
+      {media ? <div id="galeri" className="mt-5 scroll-mt-24">{media}</div> : null}
 
       {/* Mobile: horizontal scroll-snap. Desktop: grid. */}
       <div
@@ -346,5 +346,6 @@ export function CustomerReviews({
     </section>
   );
 }
+
 
 
