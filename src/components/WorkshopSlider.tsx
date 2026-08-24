@@ -1,4 +1,5 @@
-﻿import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { SocialLightbox } from "@/components/SocialLightbox";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { SLIDER_IMAGES } from "@/lib/shop-data";
@@ -101,4 +102,5 @@ export function WorkshopSlider({ images }: { images?: string[] }) {
     </>
   );
 }
+
 
