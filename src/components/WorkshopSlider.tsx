@@ -6,7 +6,7 @@ import { SLIDER_IMAGES } from "@/lib/shop-data";
 export function WorkshopSlider({ images }: { images?: string[] }) {
   const slides = images && images.length > 0 ? images : SLIDER_IMAGES;
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" }, [
-    Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true }),
+    Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true }),
   ]);
   const [selected, setSelected] = useState(0);
 
@@ -76,3 +76,4 @@ export function WorkshopSlider({ images }: { images?: string[] }) {
     </div>
   );
 }
+

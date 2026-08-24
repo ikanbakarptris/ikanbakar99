@@ -105,7 +105,7 @@ function ReviewCard({ review }: { review: CustomerReview }) {
   };
 
   return (
-    <article className="flex h-full min-w-0 flex-col rounded-2xl border border-border bg-card p-4 shadow-lift hover:-translate-y-1 hover:shadow-xl hover:border-primary/20 transition-all duration-300">
+    <article className="flex h-full min-w-0 flex-col rounded-2xl border border-border bg-card p-4 shadow-lift hover:-translate-y-1 hover:shadow-xl hover:border-primary/20 transition-all duration-300 will-change-transform">
       <div className="flex items-center justify-between gap-2">
         <StarRating stars={review.stars} />
         <div className="flex items-center gap-2">
@@ -346,4 +346,5 @@ export function CustomerReviews({
     </section>
   );
 }
+
 

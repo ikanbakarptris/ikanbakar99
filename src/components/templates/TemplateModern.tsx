@@ -155,7 +155,7 @@ export default function TemplateModern() {
       {settings?.advanced_head_scripts && (
         <div dangerouslySetInnerHTML={{ __html: settings.advanced_head_scripts }} />
       )}
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
+      <header className="sticky top-0 z-40 bg-background/60 backdrop-blur-xl border-b border-white/10 shadow-sm supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
           <div className="min-w-0 flex items-center gap-8">
             <div>
@@ -186,11 +186,11 @@ export default function TemplateModern() {
             <p className="inline-flex rounded-full bg-ink text-ink-foreground px-3 py-1 text-xs font-semibold shadow-sm">
               {heroBadge}
             </p>
-            <h1 className="mt-4 text-4xl leading-[1.05] font-bold md:text-5xl">{heroTitle}</h1>
-            <p className="mt-4 text-base text-foreground/90 font-medium leading-relaxed">
+            <h1 className="mt-4 text-4xl leading-[1.05] tracking-tight font-extrabold md:text-5xl md:leading-[1.1] text-foreground"> {heroTitle}</h1>
+            <p className="mt-4 text-[15px] sm:text-base text-foreground/90 font-medium leading-relaxed">
               {heroDesc1}
             </p>
-            <p className="mt-3 text-base font-medium text-foreground">{heroDesc2}</p>
+            <p className="mt-3 text-[15px] sm:text-base font-medium text-foreground">{heroDesc2}</p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <WhatsAppCta className="w-full sm:w-auto" url={dynamicWaUrl} text={ctaWaText} />
               <MapsCta
@@ -441,7 +441,7 @@ export default function TemplateModern() {
 
       <nav
         aria-label="Aksi cepat"
-        className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/85 px-3 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-cta backdrop-blur-md md:hidden"
+        className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/60 px-3 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-cta backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 md:hidden"
       >
         <div className="grid grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] gap-2">
           <WhatsAppCta url={dynamicWaUrl} text={ctaWaText} />
@@ -451,6 +451,10 @@ export default function TemplateModern() {
     </div>
   );
 }
+
+
+
+
 
 
 
