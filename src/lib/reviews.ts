@@ -68,7 +68,7 @@ export async function fetchReviews(): Promise<CustomerReview[]> {
   const { data, error } = await (supabase as any)
     .from("reviews")
     .select(
-      "id, reviewer_name, rating, review_text, reviewer_role, is_local_guide, media_url, reviewer_avatar_url, reviewer_url, bike_type, owner_reply, sort_order, created_at",
+      "id, reviewer_name, rating, review_text, reviewer_role, is_local_guide, media_url, reviewer_avatar_url, reviewer_url, sort_order, created_at",
     )
     .order("sort_order", { ascending: true })
     .order("created_at", { ascending: false });

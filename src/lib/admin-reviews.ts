@@ -31,13 +31,11 @@ export const EMPTY_REVIEW: ReviewInput = {
   media_url: null,
   reviewer_avatar_url: null,
   reviewer_url: null,
-  bike_type: null,
   sort_order: 0,
-  owner_reply: null,
 };
 
 const COLUMNS =
-  "id, reviewer_name, rating, review_text, reviewer_role, is_local_guide, media_url, reviewer_avatar_url, reviewer_url, bike_type, owner_reply, sort_order, created_at";
+  "id, reviewer_name, rating, review_text, reviewer_role, is_local_guide, media_url, reviewer_avatar_url, reviewer_url, sort_order, created_at";
 
 export async function listReviews(): Promise<ReviewRow[]> {
   const { data, error } = await supabase
@@ -83,3 +81,4 @@ export async function updateReviewSortOrder(id: string, sort_order: number): Pro
   const { error } = await supabase.from("reviews").update({ sort_order }).eq("id", id);
   if (error) throw new Error(error.message);
 }
+
