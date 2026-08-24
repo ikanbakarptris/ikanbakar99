@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { SocialLightbox, type LightboxPhoto } from "@/components/SocialLightbox";
 import { Link } from "@tanstack/react-router";
 
 import type { CustomerReview } from "@/lib/reviews";
@@ -74,7 +75,7 @@ function getHelpfulSeed(id?: string, name?: string): number {
   return (Math.abs(hash) % 12) + 3; // Deterministic count between 3 and 14
 }
 
-function ReviewCard({ review }: { review: CustomerReview }) {
+function ReviewCard({ review, onImageClick }: { review: CustomerReview; onImageClick?: () => void }) {
   const [helpfulCount, setHelpfulCount] = useState(() => getHelpfulSeed(review.id, review.name));
   const [hasVoted, setHasVoted] = useState(false);
 
@@ -135,22 +136,18 @@ function ReviewCard({ review }: { review: CustomerReview }) {
               preload="metadata"
             />
           ) : (
-            <a
-              href={review.reviewerUrl || review.mediaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full h-full"
-              aria-label="Lihat foto ulasan asli"
-            >
+            <button
+                onClick={onImageClick}
+                className="block w-full h-full text-left"
+                aria-label="Lihat foto ulasan asli dalam layar penuh"
+              >
               <img
                 src={review.mediaUrl}
                 alt={"Foto hidangan ikan bakar oleh pelanggan " + review.name}
                 width={400}
                 height={300}
                 className="hidden"
-                loading="lazy"
-              />
-            </a>
+                loading="lazy" /> </button>
           )}
         </div>
       ) : null}
@@ -265,6 +262,7 @@ export function CustomerReviews({
   const [filterMediaOnly, setFilterMediaOnly] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [starFilter, setStarFilter] = useState<number | null>(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<LightboxPhoto | null>(null);
 
   if (!isLoading && reviews.length === 0 && !media) return null;
 
@@ -334,7 +332,7 @@ export function CustomerReviews({
                 role="listitem"
                 className="w-[85%] shrink-0 snap-start sm:w-[60%] md:w-auto"
               >
-                <ReviewCard review={review} />
+                <ReviewCard review={review} onImageClick={() => setSelectedPhoto(review as any)} />
               </div>
             ))}
       </div>
@@ -343,9 +341,16 @@ export function CustomerReviews({
       <p className="mt-2 text-center text-xs text-muted-foreground md:hidden">
         Geser untuk lihat ulasan lainnya →
       </p>
+          {selectedPhoto && typeof document !== "undefined" && (
+        <SocialLightbox 
+          photo={selectedPhoto} 
+          onClose={() => setSelectedPhoto(null)} 
+        />
+      )}
     </section>
   );
 }
+
 
 
 
