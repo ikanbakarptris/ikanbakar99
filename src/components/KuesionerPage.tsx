@@ -166,10 +166,12 @@ function ChiliSelector({
 function RewardScreen({
   nama,
   kodeDiskon,
+  menuFavorit,
   onShare,
 }: {
   nama: string;
   kodeDiskon: string;
+  menuFavorit: string;
   onShare: () => void;
 }) {
   const [showBadge, setShowBadge] = useState(false);
@@ -178,77 +180,124 @@ function RewardScreen({
     return () => clearTimeout(t);
   }, []);
 
+  const PAK_TRIS_WA = "6282227459399";
+  const chatPakTrisUrl = `https://wa.me/${PAK_TRIS_WA}?text=${encodeURIComponent(
+    `Halo Pak Tris! Saya ${nama} baru isi kuesioner Petualang Rasa.\nKode diskon saya: *${kodeDiskon}*\nMau tanya-tanya dulu soal pesanan Ikan Bakar ya 😊`
+  )}`;
+
+  const handleSavePDF = () => {
+    window.print();
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 flex flex-col items-center justify-center p-4">
-      {/* Confetti dots */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        {["🎉", "⭐", "🌟", "✨", "🎊", "🏅"].map((emoji, i) => (
-          <span
-            key={i}
-            className="absolute text-2xl animate-bounce"
-            style={{
-              left: `${10 + i * 15}%`,
-              top: `${5 + (i % 3) * 8}%`,
-              animationDelay: `${i * 0.2}s`,
-              animationDuration: `${1.5 + i * 0.3}s`,
-            }}
-          >
-            {emoji}
-          </span>
-        ))}
-      </div>
+    <>
+      {/* Print-only style — only shows badge card when printing/saving */}
+      <style>{`
+        @media print {
+          body > * { display: none !important; }
+          #reward-print-area { display: block !important; position: static !important; }
+          #reward-print-area .no-print { display: none !important; }
+        }
+        @media screen { #reward-print-area { display: block; } }
+      `}</style>
 
-      <div
-        className={`w-full max-w-sm transition-all duration-700 ${showBadge ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 translate-y-4"}`}
-      >
-        {/* Badge */}
-        <div className="bg-white rounded-3xl shadow-2xl border border-amber-100 overflow-hidden">
-          <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-6 text-center">
-            <div className="text-6xl mb-2 drop-shadow-lg">🏅</div>
-            <h2 className="text-white font-black text-xl leading-tight">
-              Petualang Rasa<br />Puri Delta
-            </h2>
-            <p className="text-amber-100 text-xs mt-1 font-medium">Batch Perdana — {new Date().getFullYear()}</p>
-          </div>
-
-          <div className="p-5 space-y-4">
-            <div className="text-center">
-              <p className="text-slate-500 text-sm">Selamat, <strong className="text-foreground">{nama}</strong>!</p>
-              <p className="text-slate-400 text-xs mt-1">Masukan Anda sangat berarti untuk warung kami 🙏</p>
-            </div>
-
-            {/* Discount code */}
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-dashed border-amber-300 rounded-2xl p-4 text-center">
-              <p className="text-xs text-amber-600 font-semibold uppercase tracking-widest mb-1">Kode Diskon Anda</p>
-              <p className="font-black text-2xl text-amber-700 tracking-widest">{kodeDiskon}</p>
-              <p className="text-[11px] text-slate-400 mt-1">Hemat <strong>10%</strong> untuk pesanan pertama Anda</p>
-            </div>
-
-            <p className="text-[11px] text-slate-400 text-center leading-relaxed">
-              📌 Screenshot halaman ini & tunjukkan ke Pak Tris saat pesan. Berlaku untuk pesanan pertama di area Puri Delta.
-            </p>
-
-            <Button onClick={onShare} className="w-full gap-2 bg-[#25D366] hover:bg-[#1ebe5c] text-white rounded-full py-5 text-sm font-bold shadow-lg">
-              <Share2 className="w-4 h-4" />
-              Bagikan ke Grup Warga & Dapat Bonus!
-            </Button>
-
-            <a
-              href="/"
-              className="block text-center text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+      <div id="reward-print-area" className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 flex flex-col items-center justify-center p-4">
+        {/* Confetti dots */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden no-print" aria-hidden="true">
+          {["🎉", "⭐", "🌟", "✨", "🎊", "🏅"].map((emoji, i) => (
+            <span
+              key={i}
+              className="absolute text-2xl animate-bounce"
+              style={{
+                left: `${10 + i * 15}%`,
+                top: `${5 + (i % 3) * 8}%`,
+                animationDelay: `${i * 0.2}s`,
+                animationDuration: `${1.5 + i * 0.3}s`,
+              }}
             >
-              Kembali ke Beranda →
-            </a>
-          </div>
+              {emoji}
+            </span>
+          ))}
         </div>
 
-        {/* Sharing incentive */}
-        <div className="mt-4 bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-amber-100 text-center">
-          <p className="text-xs text-slate-500 font-medium">
-            🎁 <strong className="text-foreground">Ajak 3 teman mengisi</strong> = dapat <strong className="text-amber-600">minuman gratis</strong> saat makan pertama!
-          </p>
-        </div>
-      </div>
+        <div
+          className={`w-full max-w-sm transition-all duration-700 ${showBadge ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 translate-y-4"}`}
+        >
+          {/* Badge card */}
+          <div id="badge-card" className="bg-white rounded-3xl shadow-2xl border border-amber-100 overflow-hidden">
+            <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-6 text-center">
+              <div className="text-6xl mb-2 drop-shadow-lg">🏅</div>
+              <h2 className="text-white font-black text-xl leading-tight">
+                Petualang Rasa<br />Puri Delta
+              </h2>
+              <p className="text-amber-100 text-xs mt-1 font-medium">Batch Perdana — {new Date().getFullYear()}</p>
+            </div>
+
+            <div className="p-5 space-y-4">
+              <div className="text-center">
+                <p className="text-slate-500 text-sm">Selamat, <strong className="text-foreground">{nama}</strong>!</p>
+                <p className="text-slate-400 text-xs mt-1">Masukan Anda sangat berarti untuk warung kami 🙏</p>
+                {menuFavorit && (
+                  <p className="text-xs text-amber-600 font-semibold mt-1">Menu pilihan: {menuFavorit}</p>
+                )}
+              </div>
+
+              {/* Discount code */}
+              <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-dashed border-amber-300 rounded-2xl p-4 text-center">
+                <p className="text-xs text-amber-600 font-semibold uppercase tracking-widest mb-1">Kode Diskon Anda</p>
+                <p className="font-black text-2xl text-amber-700 tracking-widest">{kodeDiskon}</p>
+                <p className="text-[11px] text-slate-400 mt-1">Hemat <strong>10%</strong> untuk pesanan pertama Anda</p>
+              </div>
+
+              <p className="text-[11px] text-slate-400 text-center leading-relaxed">
+                📌 Tunjukkan kode ini ke Pak Tris saat pesan. Berlaku untuk pesanan pertama di area Puri Delta.
+              </p>
+
+              {/* Primary: Save / PDF */}
+              <Button
+                onClick={handleSavePDF}
+                className="w-full gap-2 bg-amber-500 hover:bg-amber-600 text-white rounded-full py-5 text-sm font-bold shadow-md no-print"
+              >
+                💾 Simpan Kode (PDF / Screenshot)
+              </Button>
+
+              {/* Chat Pak Tris */}
+              <a
+                href={chatPakTrisUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="no-print flex items-center justify-center gap-2 w-full rounded-full py-3 px-4 bg-[#25D366] hover:bg-[#1ebe5c] text-white text-sm font-bold shadow-md transition-colors"
+              >
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Chat Pak Tris Sekarang
+              </a>
+
+              {/* Share to group */}
+              <Button
+                onClick={onShare}
+                variant="outline"
+                className="w-full gap-2 rounded-full py-4 text-sm font-bold no-print border-green-300 text-green-700 hover:bg-green-50"
+              >
+                <Share2 className="w-4 h-4" />
+                Bagikan ke Grup Warga & Dapat Bonus!
+              </Button>
+
+              <a
+                href="/"
+                className="no-print block text-center text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+              >
+                Kembali ke Beranda →
+              </a>
+            </div>
+          </div>
+
+          {/* Sharing incentive */}
+          <div className="no-print mt-4 bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-amber-100 text-center">
+            <p className="text-xs text-slate-500 font-medium">
+              🎁 <strong className="text-foreground">Ajak 3 teman mengisi</strong> = dapat <strong className="text-amber-600">minuman gratis</strong> saat makan pertama!
+            </p>
     </div>
   );
 }
@@ -327,7 +376,7 @@ export default function KuesionerPage() {
   };
 
   if (isSuccess) {
-    return <RewardScreen nama={formData.nama} kodeDiskon={kodeDiskon} onShare={handleShare} />;
+    return <RewardScreen nama={formData.nama} kodeDiskon={kodeDiskon} menuFavorit={formData.menu_favorit} onShare={handleShare} />;
   }
 
   const currentMeta = STEP_META[step - 1];
