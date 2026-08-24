@@ -5,6 +5,7 @@ import { reviewsQueryOptions } from "@/lib/reviews";
 import { siteSettingsQueryOptions } from "@/lib/site-settings";
 import { resolveMediaUrls } from "@/lib/media";
 import { WorkshopSlider } from "@/components/WorkshopSlider";
+import { Link } from "@tanstack/react-router";
 import { CustomerReviews } from "@/components/CustomerReviews";
 import { AnimateIn } from "@/components/AnimateIn";
 
@@ -165,8 +166,8 @@ export default function TemplateModern() {
             <nav className="hidden md:flex items-center gap-5 text-sm font-medium text-muted-foreground">
               <a href="#layanan" className="hover:text-foreground transition-colors">Menu</a>
               <a href="#reviews-heading" className="hover:text-foreground transition-colors">Ulasan</a>
-              <a href="#galeri" className="hover:text-foreground transition-colors">Galeri</a>
-              <a href="/kuesioner" className="hover:text-primary transition-colors text-primary font-bold">Kuesioner</a>
+              <Link to="/galeri" className="hover:text-foreground transition-colors">Galeri</Link>
+              <Link to="/kuesioner" className="hover:text-primary transition-colors text-primary font-bold">Kuesioner</Link>
             </nav>
           </div>
           <div className="hidden md:flex items-center gap-3">
@@ -366,15 +367,7 @@ export default function TemplateModern() {
                   ↗
                 </span>
               </a>
-              <a
-                href="/ulasan"
-                className="text-xs font-semibold text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center justify-center gap-1.5"
-              >
-                Lihat galeri foto pelanggan{" "}
-                <span aria-hidden="true" className="text-[10px]">
-                  ↗
-                </span>
-              </a>
+              <Link to="/galeri" className="text-xs font-semibold text-primary hover:underline hover:text-primary/80 transition-colors inline-flex items-center justify-center gap-1.5">Lihat galeri foto pelanggan <span aria-hidden="true" className="text-[10px]">?</span></Link>
             </div>
           </div>
           <div className="rounded-2xl border border-primary/30 bg-primary/10 p-5 hover:shadow-lg hover:bg-primary/15 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
