@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KuesionerRouteImport } from './routes/kuesioner'
 import { Route as UlasanRouteImport } from './routes/ulasan'
 import { Route as DapurAdminIndexRouteImport } from './routes/dapur-admin.index'
 import { Route as DapurAdminDashboardRouteImport } from './routes/dapur-admin.dashboard'
@@ -18,6 +19,11 @@ import { Route as DapurAdminResetPasswordRouteImport } from './routes/dapur-admi
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KuesionerRoute = KuesionerRouteImport.update({
+  id: '/kuesioner',
+  path: '/kuesioner',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UlasanRoute = UlasanRouteImport.update({
@@ -43,6 +49,7 @@ const DapurAdminResetPasswordRoute = DapurAdminResetPasswordRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kuesioner': typeof KuesionerRoute
   '/ulasan': typeof UlasanRoute
   '/dapur-admin/dashboard': typeof DapurAdminDashboardRoute
   '/dapur-admin/reset-password': typeof DapurAdminResetPasswordRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kuesioner': typeof KuesionerRoute
   '/ulasan': typeof UlasanRoute
   '/dapur-admin/dashboard': typeof DapurAdminDashboardRoute
   '/dapur-admin/reset-password': typeof DapurAdminResetPasswordRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kuesioner': typeof KuesionerRoute
   '/ulasan': typeof UlasanRoute
   '/dapur-admin/dashboard': typeof DapurAdminDashboardRoute
   '/dapur-admin/reset-password': typeof DapurAdminResetPasswordRoute
@@ -67,6 +76,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/kuesioner'
     | '/ulasan'
     | '/dapur-admin/dashboard'
     | '/dapur-admin/reset-password'
@@ -74,6 +84,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/kuesioner'
     | '/ulasan'
     | '/dapur-admin/dashboard'
     | '/dapur-admin/reset-password'
@@ -81,6 +92,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/kuesioner'
     | '/ulasan'
     | '/dapur-admin/dashboard'
     | '/dapur-admin/reset-password'
@@ -89,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KuesionerRoute: typeof KuesionerRoute
   UlasanRoute: typeof UlasanRoute
   DapurAdminDashboardRoute: typeof DapurAdminDashboardRoute
   DapurAdminResetPasswordRoute: typeof DapurAdminResetPasswordRoute
@@ -102,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kuesioner': {
+      id: '/kuesioner'
+      path: '/kuesioner'
+      fullPath: '/kuesioner'
+      preLoaderRoute: typeof KuesionerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ulasan': {
@@ -137,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KuesionerRoute: KuesionerRoute,
   UlasanRoute: UlasanRoute,
   DapurAdminDashboardRoute: DapurAdminDashboardRoute,
   DapurAdminResetPasswordRoute: DapurAdminResetPasswordRoute,
