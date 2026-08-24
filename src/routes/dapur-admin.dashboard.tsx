@@ -113,7 +113,7 @@ const TABS = [
   { id: "services", label: "Layanan" },
   { id: "theme", label: "Tema" },
   { id: "media", label: "Media" },
-  { id: "reviews", label: "Ulasan" },
+  { id: "reviews", label: "Ulasan & Galeri" },
   { id: "ui", label: "Label UI" },
   { id: "survey", label: "Kuesioner" },
   { id: "advanced", label: "SEO & Lanjutan" },
@@ -1228,7 +1228,7 @@ function ReviewsPanel() {
         </form>
       </Panel>
 
-      <Panel title="Daftar Ulasan" description="Kelola semua ulasan yang tersimpan di database.">
+      <Panel title="Kelola Ulasan & Galeri" description="Kelola teks ulasan dan foto galeri pelanggan. Ulasan yang memiliki gambar akan otomatis masuk ke halaman Galeri.">
         {isPending ? (
           <p className="text-sm text-muted-foreground">Memuat ulasanâ€¦</p>
         ) : error ? (
