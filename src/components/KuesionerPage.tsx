@@ -116,7 +116,7 @@ export default function KuesionerPage() {
         </p>
       </div>
 
-      <Card className="w-full max-w-md shadow-lg border-t-4 border-t-primary">
+      <Card className="w-full max-w-md shadow-lg border-t-4 border-t-primary transition-all duration-500 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">
             {step === 1 && "Kenalan Dulu Yuk"}
@@ -174,7 +174,7 @@ export default function KuesionerPage() {
                 ].map((menu) => (
                   <div
                     key={menu}
-                    className="flex items-center space-x-2 border p-3 rounded-md hover:bg-slate-50 transition-colors"
+                    className="flex items-center space-x-2 border p-3 rounded-lg hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 cursor-pointer active:scale-[0.98]"
                   >
                     <RadioGroupItem value={menu} id={menu} />
                     <Label htmlFor={menu} className="flex-1 cursor-pointer">
@@ -253,5 +253,6 @@ export default function KuesionerPage() {
     </div>
   );
 }
+
 
 

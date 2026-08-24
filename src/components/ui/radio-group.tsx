@@ -20,7 +20,7 @@ const RadioGroupItem = React.forwardRef<
     <Item
       ref={ref}
       className={cn(
-        "aspect-square h-4 w-4 rounded-full border border-primary text-primary shadow cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+        "aspect-square h-4 w-4 rounded-full border border-primary text-primary shadow cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-md active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}
@@ -34,3 +34,4 @@ const RadioGroupItem = React.forwardRef<
 RadioGroupItem.displayName = Item.displayName;
 
 export { RadioGroup, RadioGroupItem };
+
