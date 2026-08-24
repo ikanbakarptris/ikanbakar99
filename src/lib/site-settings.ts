@@ -47,6 +47,7 @@ export interface SiteSettings {
   advanced_json_ld?: string | null;
   advanced_css?: string | null;
   advanced_head_scripts?: string | null;
+  kuesioner_promo_image?: string | null;
   updated_at?: string;
 }
 
@@ -81,7 +82,7 @@ export const DEFAULT_SETTINGS: SiteSettingsInput = {
       title: "Lele Bakar",
       desc: "Menu Boom. Lele segar bumbu rempah, dibakar garing di luar lembut di dalam. Gratis sambal pilihan.",
       price: "Rp 10.000",
-      icon: "🔥",
+      icon: "🐟",
     },
     {
       title: "Ayam Bule Bakar",
@@ -99,7 +100,7 @@ export const DEFAULT_SETTINGS: SiteSettingsInput = {
       title: "Gurameh Bakar",
       desc: "Menu spesial untuk keluarga. Gurameh pilihan dibakar utuh, porsi puas untuk 2-3 orang.",
       price: "Rp 30.000",
-      icon: "⭐",
+      icon: "🐡",
     },
     {
       title: "Sambal Terasi & Sambal Bawang",
@@ -123,6 +124,7 @@ export const DEFAULT_SETTINGS: SiteSettingsInput = {
   social_tiktok: null,
   contact_email: null,
   active_template: "modern",
+  kuesioner_promo_image: null,
 };
 
 /** Untyped table handle — `site_settings` is absent from the generated types. */

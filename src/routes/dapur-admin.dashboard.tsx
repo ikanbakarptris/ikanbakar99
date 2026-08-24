@@ -115,6 +115,7 @@ const TABS = [
   { id: "media", label: "Media" },
   { id: "reviews", label: "Ulasan" },
   { id: "ui", label: "Label UI" },
+  { id: "survey", label: "Kuesioner" },
   { id: "advanced", label: "SEO & Lanjutan" },
 ] as const;
 
@@ -157,6 +158,7 @@ function AdminDashboard() {
         {tab === "media" ? <MediaPanel /> : null}
         {tab === "reviews" ? <ReviewsPanel /> : null}
         {tab === "ui" ? <UiLabelsPanel /> : null}
+        {tab === "survey" ? <SurveyTab /> : null}
         {tab === "advanced" ? <AdvancedPanel /> : null}
       </main>
 
@@ -1476,7 +1478,7 @@ function SurveyTab() {
     const headers = ["Waktu", "Nama", "WhatsApp", "Menu Favorit", "Tingkat Pedas", "Saran"];
 
     // Create CSV rows
-    const rows = responses.map((r) => [
+    const rows = responses.map((r: any) => [
       new Date(r.created_at).toLocaleString("id-ID"),
       '"' + (r.nama || "").replace(/"/g, '""') + '"',
       '"' + (r.whatsapp || "").replace(/"/g, '""') + '"',
@@ -1570,3 +1572,5 @@ function SurveyTab() {
     </div>
   );
 }
+
+
