@@ -177,6 +177,12 @@ export default function TemplateModern() {
             <Stars /> {Number(shopRating).toFixed(1)}
           </span>
         </div>
+        <nav className="flex md:hidden w-full overflow-x-auto gap-6 px-4 py-2 border-t border-white/10 text-sm font-medium text-muted-foreground hide-scrollbar bg-background/30 backdrop-blur-md">
+          <a href="#layanan" className="whitespace-nowrap hover:text-foreground">Menu</a>
+          <a href="#reviews-heading" className="whitespace-nowrap hover:text-foreground">Ulasan</a>
+          <Link to="/galeri" className="whitespace-nowrap hover:text-foreground">Galeri</Link>
+          <Link to="/kuesioner" className="whitespace-nowrap text-primary font-bold">Kuesioner</Link>
+        </nav>
       </header>
 
       <section className="relative overflow-hidden bg-background text-foreground">
